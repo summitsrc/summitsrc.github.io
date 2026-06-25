@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Sync 360° — Digital Compliance Management Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0D2B55; --navy-dk:#081D3A; --blue:#1A7FAD; --blue-lt:#2EA8D8;
+  --amber:#F5A623; --amber-dk:#D4880A; --slate:#64748B;
+  --off:#F0F7FB; --line:rgba(255,255,255,0.08); --line-lt:#E2E8F0;
+  --fd:'Barlow Condensed',sans-serif; --fb:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--navy);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 40px;height:66px;display:flex;align-items:center;gap:40px}
+.nav-links{display:flex;gap:24px;margin-left:auto;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:8px 18px;background:var(--amber);color:var(--navy-dk)!important;font-weight:700!important;border-radius:6px;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--amber-dk)!important}
+
+/* COMING SOON BANNER */
+.coming-banner{background:linear-gradient(90deg,var(--amber-dk),var(--amber));padding:10px 40px;text-align:center;position:sticky;top:66px;z-index:89}
+.coming-banner-inner{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.coming-banner span{font-size:13px;font-weight:700;color:var(--navy-dk)}
+.coming-dot{width:8px;height:8px;border-radius:50%;background:var(--navy-dk);animation:blink 1.2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy-dk);display:flex;flex-direction:column;justify-content:center;padding:120px 40px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(26,127,173,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(26,127,173,0.07) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,transparent,black 25%,black 80%,transparent)}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto;width:100%}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.breadcrumb a{color:var(--blue-lt)}
+.breadcrumb a:hover{color:#fff}
+
+/* Coming soon hero badge */
+.cs-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);border:1.5px solid rgba(245,166,35,0.4);color:var(--amber);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:24px}
+.cs-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--amber);animation:blink 1.2s infinite;flex-shrink:0}
+
+.hero-logo{height:100px;width:auto;margin-bottom:28px;display:block}
+.hero-h1{font-family:var(--fd);font-size:clamp(44px,6.5vw,82px);font-weight:900;color:#fff;line-height:0.93;letter-spacing:-0.5px;text-transform:uppercase;margin-bottom:20px}
+.hero-h1 em{font-style:normal;color:var(--blue-lt)}
+.hero-p{font-size:17px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:560px;margin-bottom:40px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-a{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--amber);color:var(--navy-dk);font-size:15px;font-weight:700;border-radius:7px;transition:background 0.2s,transform 0.15s}
+.btn-a:hover{background:var(--amber-dk);transform:translateY(-2px)}
+.btn-b{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.75);font-size:15px;font-weight:600;border-radius:7px;transition:border-color 0.2s,color 0.2s}
+.btn-b:hover{border-color:rgba(255,255,255,0.4);color:#fff}
+
+/* NOTIFY STRIP */
+.notify-strip{background:rgba(26,127,173,0.12);border:1.5px solid rgba(26,127,173,0.25);border-radius:12px;padding:24px 28px;margin-top:40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;max-width:640px}
+.notify-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.5;flex:1;min-width:200px}
+.notify-text strong{color:#fff}
+.notify-form{display:flex;gap:8px;flex-wrap:wrap}
+.notify-input{padding:10px 14px;border-radius:7px;border:1.5px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:#fff;font-size:13px;width:220px}
+.notify-input::placeholder{color:rgba(255,255,255,0.35)}
+.notify-input:focus{outline:none;border-color:var(--blue-lt)}
+.notify-btn{padding:10px 18px;background:var(--blue);border:none;color:#fff;font-size:13px;font-weight:700;border-radius:7px;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.notify-btn:hover{background:var(--blue-lt)}
+
+/* SECTION BASE */
+.sec{padding:88px 40px}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.sec-h2{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;line-height:1;color:var(--navy);letter-spacing:-0.5px;margin-bottom:14px}
+.sec-h2 em{font-style:normal;color:var(--blue)}
+.sec-p{font-size:15px;color:var(--slate);line-height:1.7;max-width:580px;margin-bottom:48px}
+
+/* WHAT IS IT */
+.what{background:var(--off)}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.what-points{display:flex;flex-direction:column;gap:16px}
+.what-point{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:10px;background:#fff;border:1.5px solid var(--line-lt);transition:border-color 0.2s,transform 0.2s}
+.what-point:hover{border-color:var(--blue);transform:translateX(4px)}
+.wp-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.wp-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.wp-body{font-size:13px;color:var(--slate);line-height:1.55}
+.what-visual{background:var(--navy-dk);border-radius:16px;padding:28px;border:1.5px solid rgba(255,255,255,0.08)}
+.wv-title{font-size:11px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px}
+.wv-modules{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wv-mod{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px;transition:background 0.2s,border-color 0.2s}
+.wv-mod:hover{background:rgba(26,127,173,0.12);border-color:rgba(26,127,173,0.3)}
+.wv-mod-icon{font-size:16px;margin-bottom:6px}
+.wv-mod-name{font-size:12px;font-weight:700;color:rgba(255,255,255,0.7)}
+.wv-mod-tag{font-size:10px;color:rgba(255,255,255,0.3);margin-top:2px}
+.wv-coming{font-size:10px;font-weight:700;color:var(--amber);background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.2);padding:1px 6px;border-radius:4px;display:inline-block;margin-top:4px}
+
+/* MODULES */
+.modules{background:#fff}
+.mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mod-card{border:1.5px solid var(--line-lt);border-radius:12px;padding:26px 22px;border-top:4px solid var(--blue);transition:box-shadow 0.2s,transform 0.2s;position:relative}
+.mod-card:hover{box-shadow:0 8px 28px rgba(13,43,85,0.1);transform:translateY(-2px)}
+.mod-card.locked{border-top-color:var(--amber);opacity:0.85}
+.mod-lock-badge{position:absolute;top:14px;right:14px;background:var(--amber);color:var(--navy-dk);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;letter-spacing:0.5px}
+.mod-icon{font-size:26px;margin-bottom:14px}
+.mod-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.mod-body{font-size:12px;color:var(--slate);line-height:1.6;margin-bottom:14px}
+.mod-features{display:flex;flex-direction:column;gap:6px}
+.mod-feat{font-size:11px;color:var(--slate);display:flex;align-items:center;gap:6px}
+.mod-feat::before{content:'·';color:var(--blue);font-weight:900;flex-shrink:0}
+
+/* PRICING */
+.pricing{background:var(--navy-dk)}
+.pricing .sec-ey{color:var(--amber)}
+.pricing .sec-h2{color:#fff}
+.pricing .sec-p{color:rgba(255,255,255,0.4)}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan-card{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;display:flex;flex-direction:column;position:relative;transition:border-color 0.2s,background 0.2s,transform 0.2s}
+.plan-card:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.plan-card.featured{border-color:var(--amber);background:rgba(245,166,35,0.05)}
+.plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy-dk);font-size:10px;font-weight:800;padding:3px 14px;border-radius:99px;white-space:nowrap;letter-spacing:0.5px}
+.plan-cs-badge{position:absolute;top:-12px;right:16px;background:rgba(245,166,35,0.15);border:1px solid var(--amber);color:var(--amber);font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.plan-name{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:4px}
+.plan-sub{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.plan-price{font-family:var(--fd);font-size:48px;font-weight:900;color:#fff;line-height:1;margin-bottom:4px}
+.plan-price sup{font-size:22px;vertical-align:top;margin-top:8px}
+.plan-price sub{font-size:14px;font-weight:500;color:rgba(255,255,255,0.35)}
+.plan-price-tbd{font-family:var(--fd);font-size:32px;font-weight:900;color:rgba(255,255,255,0.4);line-height:1;margin-bottom:4px;padding-top:8px}
+.plan-note{font-size:11px;color:var(--amber);font-weight:600;margin-bottom:20px}
+.plan-div{height:1px;background:rgba(255,255,255,0.08);margin-bottom:18px}
+.plan-feats{display:flex;flex-direction:column;gap:9px;flex:1;margin-bottom:24px}
+.plan-feat{font-size:12px;color:rgba(255,255,255,0.6);display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+.plan-feat::before{content:'✓';color:var(--blue-lt);font-weight:700;flex-shrink:0}
+.btn-plan{display:block;width:100%;padding:11px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);color:#fff;font-size:13px;font-weight:700;border-radius:7px;text-align:center;transition:background 0.2s,border-color 0.2s;cursor:pointer}
+.btn-plan:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3)}
+.plan-card.featured .btn-plan{background:var(--amber);border-color:var(--amber);color:var(--navy-dk)}
+.plan-card.featured .btn-plan:hover{background:var(--amber-dk)}
+.plans-note{text-align:center;font-size:13px;color:rgba(255,255,255,0.2);margin-top:24px}
+
+/* TIMELINE */
+.timeline{background:var(--off)}
+.tl-wrap{position:relative;max-width:800px;margin:0 auto}
+.tl-line{position:absolute;left:28px;top:0;bottom:0;width:2px;background:var(--line-lt)}
+.tl-item{display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;position:relative}
+.tl-dot{width:58px;height:58px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;border:3px solid #fff;z-index:1;position:relative}
+.tl-dot-done{background:var(--navy)}
+.tl-dot-now{background:var(--blue)}
+.tl-dot-next{background:#fff;border-color:var(--line-lt)}
+.tl-dot-future{background:#fff;border-color:var(--line-lt)}
+.tl-content{flex:1;padding-top:12px}
+.tl-phase{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.tl-phase-done{color:var(--navy)}
+.tl-phase-now{color:var(--blue)}
+.tl-phase-next{color:var(--slate)}
+.tl-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.tl-body{font-size:13px;color:var(--slate);line-height:1.6}
+.tl-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 10px;border-radius:99px;margin-top:8px}
+.tl-tag-done{background:#dbeafe;color:#1e40af}
+.tl-tag-now{background:rgba(245,166,35,0.15);color:var(--amber-dk);border:1px solid rgba(245,166,35,0.3)}
+.tl-tag-soon{background:var(--off);color:var(--slate);border:1px solid var(--line-lt)}
+
+/* CTA */
+.cta-strip{background:var(--blue);padding:80px 40px;text-align:center}
+.cta-strip h2{font-family:var(--fd);font-size:clamp(28px,4vw,52px);font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-0.5px;margin-bottom:14px;line-height:1}
+.cta-strip p{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:12px}
+.cta-strip .cs-note{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:32px}
+
+/* FOOTER */
+footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:40px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.mod-grid{grid-template-columns:repeat(2,1fr)}.plans-grid{grid-template-columns:1fr}.what-grid{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.hero{padding:110px 20px 60px}.sec{padding:60px 20px}.coming-banner{padding:10px 20px}.mod-grid{grid-template-columns:1fr}.wv-modules{grid-template-columns:1fr}.cta-strip{padding:60px 20px}footer{padding:32px 20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:38px;width:auto;display:block"></a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="safetrack.html">SafeTrack™</a>
+    <a href="sync360.html">Sync 360°</a>
+    <a href="icore.html">iCORE</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="mailto:summitsrcauthority@gmail.com" class="nav-cta">Book a Consultation</a>
+  </div>
+</nav>
+
+<!-- COMING SOON BANNER -->
+<div class="coming-banner">
+  <div class="coming-banner-inner">
+    <div class="coming-dot"></div>
+    <span>🚀 Summit Sync 360° is currently in development — register your interest to be first to know when we launch</span>
+    <div class="coming-dot"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Summit Sync 360°</div>
+    <div class="cs-badge">Coming Soon</div>
+    <img src="logo-sync.png" alt="Summit Sync 360" class="hero-logo">
+    <h1 class="hero-h1">One platform.<br><em>Total compliance.</em></h1>
+    <p class="hero-p">Summit Sync 360° will streamline your ISO, HSE, quality, and compliance management through automation, real-time visibility, and integrated reporting — all in one cloud-based platform.</p>
+    <div class="hero-actions">
+      <a href="#notify" class="btn-a">🔔 Notify me at launch</a>
+      <a href="#modules" class="btn-b">Explore the platform →</a>
+    </div>
+
+    <!-- Email notify form -->
+    <div class="notify-strip" id="notify">
+      <div class="notify-text"><strong>Be first in line.</strong> Register your interest and we'll notify you the moment Summit Sync 360° is available — plus early access pricing.</div>
+      <div class="notify-form">
+        <input class="notify-input" type="email" placeholder="Your work email" id="notify-email">
+        <button class="notify-btn" onclick="submitNotify()">Notify me</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="sec what" id="about">
+  <div class="sec-inner">
+    <div class="what-grid">
+      <div>
+        <div class="sec-ey">What is Summit Sync 360°</div>
+        <h2 class="sec-h2">Digitise your <em>management systems</em></h2>
+        <p class="sec-p">A single cloud platform replacing spreadsheets, paper records, and disconnected systems across your ISO, HSE, quality, and compliance programmes.</p>
+        <div class="what-points">
+          <div class="what-point">
+            <div class="wp-icon">☁️</div>
+            <div><div class="wp-title">Cloud-based, always accessible</div><div class="wp-body">Access your compliance data from any device, anywhere — no servers, no IT setup, no installs.</div></div>
+          </div>
+          <div class="what-point">
+            <div class="wp-icon">🔗</div>
+            <div><div class="wp-title">All modules connected</div><div class="wp-body">Documents link to audits. Incidents link to CAPA. Training links to competency records. Everything talks to everything.</div></div>
+          </div>
+          <div class="what-point">
+            <div class="wp-icon">📊</div>
+            <div><div class="wp-title">Real-time dashboards</div><div class="wp-body">Live KPI dashboards and executive reporting — no manual data collection, no end-of-month scramble.</div></div>
+          </div>
+          <div class="what-point">
+            <div class="wp-icon">🔔</div>
+            <div><div class="wp-title">Automated alerts</div><div class="wp-body">Never miss a certificate expiry, overdue CAPA, or upcoming audit — the system notifies your team automatically.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="what-visual">
+        <div class="wv-title">Platform modules</div>
+        <div class="wv-modules">
+          <div class="wv-mod">
+            <div class="wv-mod-icon">📄</div>
+            <div class="wv-mod-name">Document Control</div>
+            <div class="wv-mod-tag">Version control · Approvals · E-sign</div>
+          </div>
+          <div class="wv-mod">
+            <div class="wv-mod-icon">⚠️</div>
+            <div class="wv-mod-name">Incident & CAPA</div>
+            <div class="wv-mod-tag">Reporting · Investigation · RCA</div>
+          </div>
+          <div class="wv-mod">
+            <div class="wv-mod-icon">🔍</div>
+            <div class="wv-mod-name">Audit Management</div>
+            <div class="wv-mod-tag">Scheduling · Findings · Reports</div>
+          </div>
+          <div class="wv-mod">
+            <div class="wv-mod-icon">🎓</div>
+            <div class="wv-mod-name">Training & Competence</div>
+            <div class="wv-mod-tag">Matrix · Certificates · Expiry alerts</div>
+          </div>
+          <div class="wv-mod">
+            <div class="wv-mod-icon">🔧</div>
+            <div class="wv-mod-name">Equipment & Calibration</div>
+            <div class="wv-mod-tag">Asset register · Calibration tracking</div>
+          </div>
+          <div class="wv-mod">
+            <div class="wv-mod-icon">📈</div>
+            <div class="wv-mod-name">KPI Dashboards</div>
+            <div class="wv-mod-tag">Real-time · Executive · Trend analysis</div>
+          </div>
+          <div class="wv-mod">
+            <div class="wv-mod-icon">🔎</div>
+            <div class="wv-mod-name">Inspection Programs</div>
+            <div class="wv-mod-tag">Checklists · Mobile · Findings</div>
+          </div>
+          <div class="wv-mod">
+            <div class="wv-mod-icon">⚖️</div>
+            <div class="wv-mod-name">Compliance Register</div>
+            <div class="wv-mod-tag">Legal · Regulatory · Obligations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="sec modules" id="modules">
+  <div class="sec-inner">
+    <div class="sec-ey">Platform Modules</div>
+    <h2 class="sec-h2">Eight modules. <em>One system.</em></h2>
+    <p class="sec-p">Every module is built to work together — so your data flows across the platform without manual re-entry or disconnected spreadsheets.</p>
+    <div class="mod-grid">
+      <div class="mod-card">
+        <div class="mod-icon">📄</div>
+        <div class="mod-title">Document Control</div>
+        <div class="mod-body">Centralised document management with version control, approval workflows, and e-signatures.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Version control & revision history</div>
+          <div class="mod-feat">Approval workflows</div>
+          <div class="mod-feat">Read & acknowledge tracking</div>
+          <div class="mod-feat">Electronic signatures</div>
+        </div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">⚠️</div>
+        <div class="mod-title">Incident & CAPA</div>
+        <div class="mod-body">End-to-end incident management from initial report through root cause analysis to corrective action closure.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Incident reporting & classification</div>
+          <div class="mod-feat">Investigation management</div>
+          <div class="mod-feat">Root cause analysis tools</div>
+          <div class="mod-feat">CAPA effectiveness reviews</div>
+        </div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">🔍</div>
+        <div class="mod-title">Audit Management</div>
+        <div class="mod-body">Plan, conduct, and report internal audits with findings tracking and automatic CAPA generation.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Risk-based audit scheduling</div>
+          <div class="mod-feat">Digital audit checklists</div>
+          <div class="mod-feat">Findings & nonconformance tracking</div>
+          <div class="mod-feat">Audit report generation</div>
+        </div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">🎓</div>
+        <div class="mod-title">Training & Competence</div>
+        <div class="mod-body">Manage your training matrix, course records, certificates, and competency verification in one place.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Training matrix by role</div>
+          <div class="mod-feat">Course assignment & completion tracking</div>
+          <div class="mod-feat">Certificate management</div>
+          <div class="mod-feat">Expiry notifications</div>
+        </div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">🔧</div>
+        <div class="mod-title">Equipment & Calibration</div>
+        <div class="mod-body">Asset register with calibration scheduling, maintenance records, and out-of-service tracking.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Asset register & tagging</div>
+          <div class="mod-feat">Calibration due date tracking</div>
+          <div class="mod-feat">Maintenance records</div>
+          <div class="mod-feat">Out-of-service alerts</div>
+        </div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">📈</div>
+        <div class="mod-title">KPI Dashboards</div>
+        <div class="mod-body">Live executive dashboards with trend analysis and performance reporting across all modules.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Real-time KPI tracking</div>
+          <div class="mod-feat">Executive summary views</div>
+          <div class="mod-feat">Trend analysis & forecasting</div>
+          <div class="mod-feat">Exportable reports</div>
+        </div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">🔎</div>
+        <div class="mod-title">Inspection Programs</div>
+        <div class="mod-body">Digital inspection checklists deployable on any device, with findings linked directly to CAPA.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Customisable checklists</div>
+          <div class="mod-feat">Mobile inspection capture</div>
+          <div class="mod-feat">Photo & evidence attachment</div>
+          <div class="mod-feat">Auto-link findings to CAPA</div>
+        </div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">⚖️</div>
+        <div class="mod-title">Compliance Register</div>
+        <div class="mod-body">Maintain your legal and regulatory obligations register with compliance status tracking and review scheduling.</div>
+        <div class="mod-features">
+          <div class="mod-feat">Legal obligation register</div>
+          <div class="mod-feat">Compliance status tracking</div>
+          <div class="mod-feat">Review scheduling & alerts</div>
+          <div class="mod-feat">Evidence of compliance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec pricing" id="pricing">
+  <div class="sec-inner">
+    <div class="sec-ey">Pricing</div>
+    <h2 class="sec-h2">Introductory pricing. <em>Coming soon.</em></h2>
+    <p class="sec-p">Pricing will be confirmed at launch. Register your interest now to receive early access pricing and be first to get access to the platform.</p>
+    <div class="plans-grid">
+
+      <div class="plan-card">
+        <div class="plan-cs-badge">Coming Soon</div>
+        <div class="plan-name">Starter</div>
+        <div class="plan-sub">Small organisations · Up to 25 users</div>
+        <div class="plan-price-tbd">TBC at launch</div>
+        <div class="plan-note">✦ Early access pricing available</div>
+        <div class="plan-div"></div>
+        <div class="plan-feats">
+          <div class="plan-feat">Up to 25 users</div>
+          <div class="plan-feat">Document Control</div>
+          <div class="plan-feat">Incident & CAPA</div>
+          <div class="plan-feat">Audit Management</div>
+          <div class="plan-feat">Training & Competence</div>
+          <div class="plan-feat">KPI Dashboards</div>
+        </div>
+        <a href="mailto:summitsrcauthority@gmail.com?subject=Summit Sync 360 - Starter Interest" class="btn-plan">Register interest →</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="plan-badge">⭐ Most Popular</div>
+        <div class="plan-name">Professional</div>
+        <div class="plan-sub">Mid-size organisations · Up to 100 users</div>
+        <div class="plan-price-tbd" style="color:rgba(255,255,255,0.6)">TBC at launch</div>
+        <div class="plan-note">✦ Early access pricing available</div>
+        <div class="plan-div"></div>
+        <div class="plan-feats">
+          <div class="plan-feat">Up to 100 users</div>
+          <div class="plan-feat">All Starter modules</div>
+          <div class="plan-feat">Equipment & Calibration</div>
+          <div class="plan-feat">Inspection Programs</div>
+          <div class="plan-feat">Compliance Register</div>
+          <div class="plan-feat">Advanced reporting & analytics</div>
+          <div class="plan-feat">Priority support</div>
+        </div>
+        <a href="mailto:summitsrcauthority@gmail.com?subject=Summit Sync 360 - Professional Interest" class="btn-plan">Register interest →</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-cs-badge">Coming Soon</div>
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-sub">Large organisations · Unlimited users</div>
+        <div class="plan-price-tbd">Custom pricing</div>
+        <div class="plan-note">✦ Contact us to discuss your requirements</div>
+        <div class="plan-div"></div>
+        <div class="plan-feats">
+          <div class="plan-feat">Unlimited users</div>
+          <div class="plan-feat">All Professional modules</div>
+          <div class="plan-feat">Custom module configuration</div>
+          <div class="plan-feat">Dedicated onboarding support</div>
+          <div class="plan-feat">SLA agreement</div>
+          <div class="plan-feat">Invoice billing available</div>
+          <div class="plan-feat">API access</div>
+        </div>
+        <a href="mailto:summitsrcauthority@gmail.com?subject=Summit Sync 360 - Enterprise Interest" class="btn-plan">Contact us →</a>
+      </div>
+
+    </div>
+    <p class="plans-note">Pricing to be confirmed at launch. Register your interest to receive early access offers.</p>
+  </div>
+</section>
+
+<!-- LAUNCH TIMELINE -->
+<section class="sec timeline" id="timeline">
+  <div class="sec-inner">
+    <div class="sec-ey">Launch Timeline</div>
+    <h2 class="sec-h2">Where we are in <em>development</em></h2>
+    <p class="sec-p">Summit Sync 360° is being built by our team. Here's where we are and what's coming next.</p>
+    <div class="tl-wrap">
+      <div class="tl-line"></div>
+      <div class="tl-item">
+        <div class="tl-dot tl-dot-done">✓</div>
+        <div class="tl-content">
+          <div class="tl-phase tl-phase-done">Phase 1 — Complete</div>
+          <div class="tl-title">Platform architecture & design</div>
+          <div class="tl-body">Core platform architecture designed, module specifications defined, and UX wireframes completed.</div>
+          <span class="tl-tag tl-tag-done">Completed</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-dot-now">⚡</div>
+        <div class="tl-content">
+          <div class="tl-phase tl-phase-now">Phase 2 — In Progress</div>
+          <div class="tl-title">Core module development</div>
+          <div class="tl-body">Building Document Control, Incident & CAPA, Audit Management, and Training modules — the foundation of the platform.</div>
+          <span class="tl-tag tl-tag-now">In development</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-dot-next" style="color:var(--slate)">3</div>
+        <div class="tl-content">
+          <div class="tl-phase tl-phase-next">Phase 3 — Coming Next</div>
+          <div class="tl-title">Beta testing with select clients</div>
+          <div class="tl-body">Closed beta with a small group of Caribbean organisations to test and refine the platform before full launch.</div>
+          <span class="tl-tag tl-tag-soon">Coming soon</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-dot-future" style="color:var(--slate)">4</div>
+        <div class="tl-content">
+          <div class="tl-phase tl-phase-next">Phase 4 — Launch</div>
+          <div class="tl-title">Full platform launch</div>
+          <div class="tl-body">Public launch of Summit Sync 360° with all eight modules, full onboarding support, and early access pricing for registered clients.</div>
+          <span class="tl-tag tl-tag-soon">Planned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Don't miss the launch.</h2>
+  <p>Register your interest today and be first to access Summit Sync 360°.</p>
+  <p class="cs-note">Early registrants will receive introductory pricing and priority onboarding.</p>
+  <a href="mailto:summitsrcauthority@gmail.com?subject=Summit Sync 360 - Register Interest" class="btn-a">🔔 Register my interest →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html"><img src="logo.png" alt="Summit" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="safetrack.html">SafeTrack™</a>
+      <a href="sync360.html">Sync 360°</a>
+      <a href="index.html#team">About</a>
+      <a href="mailto:summitsrcauthority@gmail.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority.</div>
+  </div>
+</footer>
+
+<script>
+function submitNotify() {
+  const email = document.getElementById('notify-email').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  window.location.href = `mailto:summitsrcauthority@gmail.com?subject=Summit Sync 360° - Launch Notification Request&body=Please add me to the Summit Sync 360° launch notification list.%0A%0AEmail: ${encodeURIComponent(email)}`;
+}
+</script>
+</body>
+</html>

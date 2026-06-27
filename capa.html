@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Sync CAPA Manager™ — Correct. Prevent. Improve.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#042C53;--navy-md:#0C447C;--navy-lt:#185FA5;
+  --blue:#378ADD;--blue-lt:#B5D4F4;--blue-bg:#E6F1FB;
+  --teal:#1D9E75;--teal-lt:#E1F5EE;
+  --amber:#EF9F27;--amber-dk:#854F0B;--amber-lt:#FAEEDA;
+  --red:#E24B4A;--red-lt:#FCEBEB;
+  --green:#3B6D11;--green-lt:#EAF3DE;
+  --slate:#5A6478;--off:#F4F6FA;
+  --line:rgba(255,255,255,0.08);--line-lt:#E0E4EB;
+  --fd:'Barlow Condensed',sans-serif;--fb:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--navy);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,44,83,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 40px;height:66px;display:flex;align-items:center;gap:40px}
+.nav-links{display:flex;gap:18px;margin-left:auto;align-items:center;flex-wrap:wrap}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:8px 18px;background:var(--amber);color:var(--navy)!important;font-weight:700!important;border-radius:6px}
+.nav-cta:hover{background:var(--amber-dk)!important}
+.nav-portal{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;white-space:nowrap}
+
+/* COMING SOON */
+.cs-banner{background:linear-gradient(90deg,var(--navy-md),#1A5080);border-bottom:2px solid var(--teal);padding:10px 40px;text-align:center;position:sticky;top:66px;z-index:89}
+.cs-banner span{font-size:13px;font-weight:700;color:#fff}
+.cs-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal);margin:0 8px;animation:blink 1.2s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:120px 40px 80px;gap:60px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(55,138,221,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(55,138,221,0.07) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(135deg,transparent,black 40%,black 75%,transparent)}
+.hero-left{position:relative}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.breadcrumb a{color:var(--blue)}
+.breadcrumb a:hover{color:#fff}
+.cs-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(29,158,117,0.12);border:1.5px solid rgba(29,158,117,0.35);color:#4ade80;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:99px;margin-bottom:20px}
+.cs-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:#4ade80;animation:blink 1.2s infinite;flex-shrink:0}
+.hero-tagline{font-size:11px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.hero-h1{font-family:var(--fd);font-size:clamp(40px,5.5vw,74px);font-weight:900;color:#fff;line-height:0.93;letter-spacing:-0.5px;text-transform:uppercase;margin-bottom:20px}
+.hero-h1 em{font-style:normal;color:var(--blue)}
+.hero-p{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.75;max-width:500px;margin-bottom:36px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.btn-teal{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--teal);color:#fff;font-size:14px;font-weight:700;border-radius:7px;transition:background 0.2s,transform 0.15s}
+.btn-teal:hover{background:#157a5a;transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:transparent;border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.75);font-size:14px;font-weight:600;border-radius:7px;transition:border-color 0.2s,color 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);color:#fff}
+.hero-pdca{display:flex;gap:10px;flex-wrap:wrap}
+.pdca-chip{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:99px;font-size:12px;font-weight:700;border:1.5px solid}
+.pdca-plan{background:rgba(55,138,221,0.12);border-color:rgba(55,138,221,0.3);color:var(--blue)}
+.pdca-do{background:rgba(29,158,117,0.12);border-color:rgba(29,158,117,0.3);color:#4ade80}
+.pdca-check{background:rgba(239,159,39,0.12);border-color:rgba(239,159,39,0.3);color:var(--amber)}
+.pdca-act{background:rgba(226,75,74,0.12);border-color:rgba(226,75,74,0.3);color:#fca5a5}
+
+/* APP MOCKUP */
+.app-mock{background:#F1EFE8;border-radius:14px;border:1.5px solid rgba(255,255,255,0.1);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.5)}
+.mock-topbar{background:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line-lt)}
+.mock-dots{display:flex;gap:5px}
+.mock-dot{width:9px;height:9px;border-radius:50%}
+.mock-body{display:flex;height:370px}
+.mock-sb{width:168px;background:var(--navy);border-right:1px solid rgba(255,255,255,0.05);padding:10px 0;flex-shrink:0;overflow:hidden}
+.mock-sb-logo{padding:8px 10px 10px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:6px;background:#fff;border-radius:8px;margin:6px 10px 10px;display:flex;align-items:center;justify-content:center}
+.mock-sb-logo img{height:24px;width:auto;display:block}
+.mock-nav-label{font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px 2px;font-weight:700}
+.mock-nav{display:flex;align-items:center;gap:7px;padding:7px 14px;font-size:10px;color:rgba(255,255,255,0.45);border-left:2px solid transparent}
+.mock-nav.active{color:#fff;background:rgba(55,138,221,0.2);border-left-color:var(--blue)}
+.mock-main{flex:1;padding:12px;overflow:hidden;background:var(--off)}
+.mock-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.mock-kpi{background:#fff;border-radius:6px;padding:8px 7px;border:1px solid var(--line-lt)}
+.mock-kpi-n{font-size:18px;font-weight:800;color:var(--navy);line-height:1;font-family:var(--fd)}
+.mock-kpi-l{font-size:8px;color:var(--slate);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px}
+.mock-kpi-bar{height:2px;border-radius:2px;margin-top:6px}
+.mock-panels{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mock-panel{background:#fff;border-radius:7px;padding:10px;border:1px solid var(--line-lt)}
+.mock-panel-title{font-size:8px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}
+.mock-row{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.05)}
+.mock-row:last-child{border:none}
+.mock-dot2{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.mock-label{flex:1;font-size:9px;color:var(--navy)}
+.mock-tag{font-size:8px;font-weight:700;padding:1px 6px;border-radius:99px}
+
+/* SECTION */
+.sec{padding:88px 40px}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.sec-h2{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;line-height:1;color:var(--navy);letter-spacing:-0.5px;margin-bottom:14px}
+.sec-h2 em{font-style:normal;color:var(--blue)}
+.sec-p{font-size:15px;color:var(--slate);line-height:1.7;max-width:580px;margin-bottom:48px}
+
+/* WHAT IS IT */
+.what{background:var(--off)}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.what-body{font-size:15px;color:var(--slate);line-height:1.8}
+.what-body p{margin-bottom:18px}
+.what-body strong{color:var(--navy);font-weight:700}
+.what-pts{display:flex;flex-direction:column;gap:12px}
+.wp{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;background:#fff;border:1.5px solid var(--line-lt);transition:border-color 0.2s,transform 0.2s}
+.wp:hover{border-color:var(--teal);transform:translateX(4px)}
+.wp-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.wp-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.wp-body{font-size:12px;color:var(--slate);line-height:1.55}
+
+/* PDCA */
+.pdca-sec{background:var(--navy)}
+.pdca-sec .sec-h2{color:#fff}
+.pdca-sec .sec-p{color:rgba(255,255,255,0.4)}
+.pdca-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pdca-card{border-radius:14px;padding:28px 22px;border:1.5px solid rgba(255,255,255,0.08);transition:transform 0.2s,background 0.2s}
+.pdca-card:hover{transform:translateY(-3px)}
+.pdca-p{background:rgba(55,138,221,0.08);border-color:rgba(55,138,221,0.2)}
+.pdca-d{background:rgba(29,158,117,0.08);border-color:rgba(29,158,117,0.2)}
+.pdca-c{background:rgba(239,159,39,0.08);border-color:rgba(239,159,39,0.2)}
+.pdca-a{background:rgba(226,75,74,0.08);border-color:rgba(226,75,74,0.2)}
+.pdca-letter{font-family:var(--fd);font-size:64px;font-weight:900;line-height:1;margin-bottom:8px}
+.pdca-word{font-size:14px;font-weight:800;color:#fff;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
+.pdca-body{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65}
+
+/* FEATURES */
+.features{background:#fff}
+.feat-tabs{display:flex;gap:0;border:1.5px solid var(--line-lt);border-radius:10px;overflow:hidden;margin-bottom:40px}
+.ftab{flex:1;padding:15px 8px;text-align:center;cursor:pointer;border-right:1px solid var(--line-lt);background:#fff;transition:background 0.2s;font-size:12px;font-weight:700;color:var(--slate)}
+.ftab:last-child{border-right:none}
+.ftab.active{background:var(--navy);color:#fff}
+.ftab-icon{font-size:18px;margin-bottom:4px}
+.feat-panel{display:none}
+.feat-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.fp-badge{display:inline-block;font-size:10px;font-weight:800;padding:3px 12px;border-radius:99px;margin-bottom:14px;border:1px solid}
+.fp-title{font-family:var(--fd);font-size:30px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:10px;line-height:1}
+.fp-sub{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:22px}
+.fp-feats{display:flex;flex-direction:column;gap:10px}
+.fp-feat{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border-radius:8px;border:1px solid var(--line-lt);transition:border-color 0.2s,background 0.2s}
+.fp-feat:hover{border-color:var(--teal);background:var(--teal-lt)}
+.fp-feat-icon{font-size:15px;flex-shrink:0;margin-top:1px}
+.fp-feat-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.fp-feat-body{font-size:12px;color:var(--slate);line-height:1.5}
+.fp-visual{background:var(--navy);border-radius:12px;padding:20px;border:1.5px solid rgba(255,255,255,0.08)}
+.fpv-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.fpv-title{font-size:12px;font-weight:700;color:#fff}
+.fpv-badge{font-size:10px;font-weight:700;padding:2px 9px;border-radius:99px}
+.fpv-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.fpv-row:last-child{border:none}
+.fpv-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.fpv-name{flex:1;font-size:11px;color:rgba(255,255,255,0.65);font-weight:500;line-height:1.3}
+.fpv-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:99px;white-space:nowrap}
+.fpv-meta{font-size:9px;color:rgba(255,255,255,0.3);flex-shrink:0}
+
+/* STATUS BADGES */
+.s-open{background:rgba(55,138,221,0.15);color:#93c5fd}
+.s-od{background:rgba(226,75,74,0.15);color:#fca5a5}
+.s-pc{background:rgba(239,159,39,0.15);color:var(--amber)}
+.s-cl{background:rgba(59,109,17,0.15);color:#86efac}
+.s-def{background:rgba(100,116,139,0.2);color:#94a3b8}
+.s-crit{background:rgba(121,31,31,0.4);color:#fca5a5}
+.s-high{background:rgba(226,75,74,0.15);color:#fca5a5}
+.s-med{background:rgba(239,159,39,0.15);color:var(--amber)}
+.s-low{background:rgba(59,109,17,0.15);color:#86efac}
+
+/* SOURCE TYPES */
+.sources{background:var(--off)}
+.src-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.src-card{background:#fff;border-radius:10px;padding:18px 14px;border:1.5px solid var(--line-lt);text-align:center;transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s}
+.src-card:hover{border-color:var(--teal);box-shadow:0 6px 20px rgba(29,158,117,0.1);transform:translateY(-2px)}
+.src-icon{font-size:24px;margin-bottom:8px}
+.src-name{font-size:12px;font-weight:700;color:var(--navy)}
+
+/* MORE FEATURES */
+.more-feat{background:#fff}
+.mf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mf-card{background:var(--off);border-radius:12px;padding:24px;border:1.5px solid var(--line-lt);transition:border-color 0.2s,transform 0.2s}
+.mf-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.mf-icon{font-size:24px;margin-bottom:12px}
+.mf-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:7px}
+.mf-body{font-size:13px;color:var(--slate);line-height:1.65}
+
+/* PRICING */
+.pricing{background:var(--navy)}
+.pricing .sec-ey{color:var(--teal)}
+.pricing .sec-h2{color:#fff}
+.pricing .sec-p{color:rgba(255,255,255,0.4)}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan-card{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 22px;display:flex;flex-direction:column;position:relative;transition:border-color 0.2s,background 0.2s,transform 0.2s}
+.plan-card:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.plan-card.featured{border-color:var(--teal);background:rgba(29,158,117,0.06)}
+.plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-size:10px;font-weight:800;padding:3px 14px;border-radius:99px;white-space:nowrap}
+.plan-name{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:4px}
+.plan-sub{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.plan-tbd{font-family:var(--fd);font-size:28px;font-weight:900;color:rgba(255,255,255,0.4);line-height:1;margin-bottom:4px;padding-top:4px}
+.plan-note{font-size:11px;color:var(--teal);font-weight:600;margin-bottom:20px}
+.plan-div{height:1px;background:rgba(255,255,255,0.08);margin-bottom:18px}
+.plan-feats{display:flex;flex-direction:column;gap:9px;flex:1;margin-bottom:24px}
+.plan-feat{font-size:12px;color:rgba(255,255,255,0.6);display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+.plan-feat::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
+.btn-plan{display:block;width:100%;padding:11px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);color:#fff;font-size:13px;font-weight:700;border-radius:7px;text-align:center;transition:background 0.2s}
+.btn-plan:hover{background:rgba(255,255,255,0.15)}
+.plan-card.featured .btn-plan{background:var(--teal);border-color:var(--teal)}
+.plan-card.featured .btn-plan:hover{background:#157a5a}
+.plans-note{text-align:center;font-size:13px;color:rgba(255,255,255,0.2);margin-top:24px}
+
+/* CTA */
+.cta-strip{background:linear-gradient(135deg,var(--navy),var(--navy-md));padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-strip::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(55,138,221,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(55,138,221,0.04) 1px,transparent 1px);background-size:44px 44px}
+.cta-inner{position:relative}
+.cta-strip h2{font-family:var(--fd);font-size:clamp(28px,4vw,54px);font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-0.5px;margin-bottom:14px;line-height:1}
+.cta-strip h2 em{font-style:normal;color:var(--teal)}
+.cta-strip p{font-size:16px;color:rgba(255,255,255,0.55);margin-bottom:8px}
+.cta-note{font-size:13px;color:rgba(255,255,255,0.3);margin-bottom:36px}
+.btn-a{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--amber);color:var(--navy);font-size:15px;font-weight:700;border-radius:7px;transition:background 0.2s,transform 0.15s}
+.btn-a:hover{background:var(--amber-dk);color:#fff;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid var(--line);padding:40px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+@media(max-width:1024px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:100px}.hero-right{display:none}.what-grid{grid-template-columns:1fr}.feat-panel.active{grid-template-columns:1fr}.pdca-grid{grid-template-columns:repeat(2,1fr)}.src-grid{grid-template-columns:repeat(2,1fr)}.plans-grid{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:0 16px}.nav-links{display:none}.hero{padding:100px 20px 60px}.sec{padding:60px 20px}.mf-grid{grid-template-columns:1fr}.pdca-grid{grid-template-columns:1fr}.src-grid{grid-template-columns:repeat(2,1fr)}.feat-tabs{flex-direction:column}.ftab{border-right:none;border-bottom:1px solid var(--line-lt)}.cta-strip{padding:60px 20px}footer{padding:32px 20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html"><img src="logo.png" alt="Summit" style="height:38px;width:auto;display:block"></a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="sync360.html">Our Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="workspace.html" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap">🔐 Workspace — Client Portal</a>
+    <a href="mailto:summitsrcauthority@gmail.com" class="nav-cta">Book a Consultation</a>
+  </div>
+</nav>
+
+<!-- COMING SOON BANNER -->
+<div class="cs-banner">
+  <span><span class="cs-dot"></span>Summit Sync CAPA Manager™ is coming soon — register your interest for early access<span class="cs-dot"></span></span>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-left">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="sync360.html">Summit Sync 360°</a> › CAPA Manager™</div>
+    <div class="cs-pill">Coming Soon</div>
+    <img src="logo-capa.png" alt="Summit Sync CAPA Manager" style="height:120px;width:auto;display:block;margin-bottom:16px">
+    <div class="hero-tagline">Correct. Prevent. Improve.</div>
+    <h1 class="hero-h1">Actions closed.<br><em>Problems solved.</em></h1>
+    <p class="hero-p">Summit Sync CAPA Manager™ is a full corrective and preventive action platform — raise, assign, investigate, evidence, and close actions from any source across any department, with every step audit-ready.</p>
+    <div class="hero-actions">
+      <a href="mailto:summitsrcauthority@gmail.com?subject=CAPA Manager - Early Access Request" class="btn-teal">🔔 Register for early access</a>
+      <a href="#features" class="btn-ghost">Explore the platform →</a>
+    </div>
+    <div class="hero-pdca">
+      <div class="pdca-chip pdca-plan">📋 Plan</div>
+      <div class="pdca-chip pdca-do">⚡ Do</div>
+      <div class="pdca-chip pdca-check">🔍 Check</div>
+      <div class="pdca-chip pdca-act">✅ Act</div>
+    </div>
+  </div>
+
+  <!-- App mockup -->
+  <div class="hero-right">
+    <div class="app-mock">
+      <div class="mock-topbar">
+        <div class="mock-dots">
+          <div class="mock-dot" style="background:#f87171"></div>
+          <div class="mock-dot" style="background:var(--amber)"></div>
+          <div class="mock-dot" style="background:#4ade80"></div>
+        </div>
+        <div style="flex:1;text-align:center;font-size:10px;color:var(--slate);font-weight:600">Summit Sync CAPA Manager™ — Dashboard</div>
+      </div>
+      <div class="mock-body">
+        <div class="mock-sb">
+          <div class="mock-sb-logo"><img src="logo-capa.png" alt="CAPA Manager"></div>
+          <div class="mock-nav-label">Main</div>
+          <div class="mock-nav active">⊞ Dashboard</div>
+          <div class="mock-nav">📋 Action Register</div>
+          <div class="mock-nav">🔍 Search & Filter</div>
+          <div class="mock-nav-label">Actions</div>
+          <div class="mock-nav">➕ New Action</div>
+          <div class="mock-nav">⬆️ Upload Report</div>
+          <div class="mock-nav">📎 Evidence Upload</div>
+          <div class="mock-nav-label">Reports</div>
+          <div class="mock-nav">🔔 Reminder Log</div>
+          <div class="mock-nav">📊 Export Reports</div>
+          <div class="mock-nav">🗑️ Deleted Actions</div>
+          <div class="mock-nav-label">Admin</div>
+          <div class="mock-nav">⚙️ Admin Settings</div>
+        </div>
+        <div class="mock-main">
+          <div class="mock-kpis">
+            <div class="mock-kpi"><div class="mock-kpi-n" style="color:var(--blue)">24</div><div class="mock-kpi-l">Total Actions</div><div class="mock-kpi-bar" style="background:var(--blue);width:80%"></div></div>
+            <div class="mock-kpi"><div class="mock-kpi-n" style="color:var(--red)">5</div><div class="mock-kpi-l">Overdue</div><div class="mock-kpi-bar" style="background:var(--red);width:21%"></div></div>
+            <div class="mock-kpi"><div class="mock-kpi-n" style="color:var(--amber)">8</div><div class="mock-kpi-l">Pending Closure</div><div class="mock-kpi-bar" style="background:var(--amber);width:33%"></div></div>
+            <div class="mock-kpi"><div class="mock-kpi-n" style="color:var(--teal)">11</div><div class="mock-kpi-l">Closed</div><div class="mock-kpi-bar" style="background:var(--teal);width:46%"></div></div>
+          </div>
+          <div class="mock-panels">
+            <div class="mock-panel">
+              <div class="mock-panel-title">Recent Actions</div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--red)"></div><div class="mock-label">CAPA-2026-047 Gate 2 PPE</div><span class="mock-tag" style="background:var(--red-lt);color:var(--red)">Overdue</span></div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--blue)"></div><div class="mock-label">CAPA-2026-046 Forklift Safety</div><span class="mock-tag" style="background:var(--blue-bg);color:var(--navy-md)">Open</span></div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--amber)"></div><div class="mock-label">CAPA-2026-045 Chemical Storage</div><span class="mock-tag" style="background:var(--amber-lt);color:var(--amber-dk)">Pending</span></div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--teal)"></div><div class="mock-label">CAPA-2026-044 Doc Control Gap</div><span class="mock-tag" style="background:var(--teal-lt);color:var(--teal)">Closed</span></div>
+            </div>
+            <div class="mock-panel">
+              <div class="mock-panel-title">By Department</div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--blue)"></div><div class="mock-label">Operations</div><span class="mock-tag" style="background:var(--blue-bg);color:var(--navy-md)">8</span></div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--red)"></div><div class="mock-label">Safety</div><span class="mock-tag" style="background:var(--red-lt);color:var(--red)">5</span></div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--amber)"></div><div class="mock-label">Maintenance</div><span class="mock-tag" style="background:var(--amber-lt);color:var(--amber-dk)">4</span></div>
+              <div class="mock-row"><div class="mock-dot2" style="background:var(--teal)"></div><div class="mock-label">Quality</div><span class="mock-tag" style="background:var(--teal-lt);color:var(--teal)">3</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="sec what" id="about">
+  <div class="sec-inner">
+    <div class="what-grid">
+      <div>
+        <div class="sec-ey">What is CAPA Manager™</div>
+        <h2 class="sec-h2">Every action. <em>From source to closed.</em></h2>
+        <div class="what-body">
+          <p>Summit Sync CAPA Manager™ is a <strong>full corrective and preventive action tracking platform</strong> for organisations that need to manage findings, nonconformances, and improvement actions across multiple departments and business units.</p>
+          <p>From the moment an action is raised — whether from an audit finding, incident, inspection, customer complaint, or management review — to the moment evidence is uploaded and closure is verified, <strong>every step is tracked, timestamped, and audit-ready.</strong></p>
+          <p>Built around the <strong>PDCA cycle</strong> (Plan, Do, Check, Act), CAPA Manager™ ensures corrective actions are not just raised — they are completed, evidenced, and verified effective before being closed.</p>
+        </div>
+      </div>
+      <div class="what-pts">
+        <div class="wp"><div class="wp-icon">📋</div><div><div class="wp-title">Centralised action register</div><div class="wp-body">Every CAPA in one place — searchable, filterable by status, priority, department, source, or business unit. No spreadsheets, no lost actions.</div></div></div>
+        <div class="wp"><div class="wp-icon">📎</div><div><div class="wp-title">Evidence upload & tracking</div><div class="wp-body">Attach photos, documents, and reports directly to each action as closure evidence. Actions can't close without verified evidence.</div></div></div>
+        <div class="wp"><div class="wp-icon">⬆️</div><div><div class="wp-title">Report upload & extraction</div><div class="wp-body">Upload audit or inspection reports and extract action items directly — no manual re-keying of findings from PDF reports.</div></div></div>
+        <div class="wp"><div class="wp-icon">🔔</div><div><div class="wp-title">Automated reminders</div><div class="wp-body">Action owners receive automatic reminders before due dates. Overdue actions are flagged prominently — the system chases for you.</div></div></div>
+        <div class="wp"><div class="wp-icon">📊</div><div><div class="wp-title">Live analytics & charts</div><div class="wp-body">Six live charts showing actions by department, status, owner, source type, business unit, and high-risk items — updated in real time.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDCA -->
+<section class="sec pdca-sec" id="pdca">
+  <div class="sec-inner">
+    <div class="sec-ey">Built on PDCA</div>
+    <h2 class="sec-h2">The improvement cycle <em>built in.</em></h2>
+    <p class="sec-p">Every CAPA in the system follows the Plan-Do-Check-Act cycle. Not just a philosophy — a structured workflow that ensures corrective actions actually drive improvement.</p>
+    <div class="pdca-grid">
+      <div class="pdca-card pdca-p">
+        <div class="pdca-letter" style="color:var(--blue)">P</div>
+        <div class="pdca-word">Plan</div>
+        <div class="pdca-body">Raise the action. Identify the root cause, assign an owner, set a due date, define the corrective action required, and classify the risk level and priority.</div>
+      </div>
+      <div class="pdca-card pdca-d">
+        <div class="pdca-letter" style="color:#4ade80">D</div>
+        <div class="pdca-word">Do</div>
+        <div class="pdca-body">The assignee implements the corrective action. Progress is tracked in the register. Evidence files — photos, reports, documents — are uploaded as work is completed.</div>
+      </div>
+      <div class="pdca-card pdca-c">
+        <div class="pdca-letter" style="color:var(--amber)">C</div>
+        <div class="pdca-word">Check</div>
+        <div class="pdca-body">The action moves to Pending Closure. A verifier reviews the evidence, confirms effectiveness, and either approves closure or returns the action for further work.</div>
+      </div>
+      <div class="pdca-card pdca-a">
+        <div class="pdca-letter" style="color:#fca5a5">A</div>
+        <div class="pdca-word">Act</div>
+        <div class="pdca-body">Once verified, the action is closed with a full audit trail — what was found, what was done, who verified it, and when. Lessons are available for future reference.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES TABS -->
+<section class="sec features" id="features">
+  <div class="sec-inner">
+    <div class="sec-ey">Platform Features</div>
+    <h2 class="sec-h2">Seven modules. <em>One closed loop.</em></h2>
+    <p class="sec-p">Every module feeds every other — a raised action routes to the register, the register flags overdue items, the reminder log logs every notification sent.</p>
+    <div class="feat-tabs">
+      <div class="ftab active" onclick="showFeat('reg',this)"><div class="ftab-icon">📋</div>Register</div>
+      <div class="ftab" onclick="showFeat('new',this)"><div class="ftab-icon">➕</div>New Action</div>
+      <div class="ftab" onclick="showFeat('evidence',this)"><div class="ftab-icon">📎</div>Evidence</div>
+      <div class="ftab" onclick="showFeat('upload',this)"><div class="ftab-icon">⬆️</div>Report Upload</div>
+      <div class="ftab" onclick="showFeat('reports',this)"><div class="ftab-icon">📊</div>Reports</div>
+    </div>
+
+    <!-- Register -->
+    <div class="feat-panel active" id="fp-reg">
+      <div>
+        <span class="fp-badge" style="background:var(--blue-bg);color:var(--navy-md);border-color:var(--blue-lt)">Action Register</span>
+        <div class="fp-title">Every action. One register.</div>
+        <div class="fp-sub">A complete, searchable, paginated register of every CAPA — filterable by business unit, status, department, priority, and free-text search.</div>
+        <div class="fp-feats">
+          <div class="fp-feat"><div class="fp-feat-icon">🔢</div><div><div class="fp-feat-title">Auto-numbered CAPA IDs</div><div class="fp-feat-body">Every action gets a unique ID (CAPA-2026-000047) — searchable, referenceable, and permanently traceable.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">🏢</div><div><div class="fp-feat-title">Multi-business unit support</div><div class="fp-feat-body">Filter and view actions by business unit. Each BU sees its own data — admins see everything across all units.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">⚠️</div><div><div class="fp-feat-title">Overdue highlighting</div><div class="fp-feat-body">Overdue actions are highlighted in red across the register. An alert banner at the top of the dashboard flags them immediately on login.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">📤</div><div><div class="fp-feat-title">Export to CSV</div><div class="fp-feat-body">Export the full register or any filtered view to CSV — ready for management reviews, external auditors, or board reporting.</div></div></div>
+        </div>
+      </div>
+      <div class="fp-visual">
+        <div class="fpv-hdr"><div class="fpv-title">Action Register</div><span class="fpv-badge" style="background:rgba(55,138,221,0.2);color:#93c5fd">24 Actions</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--red)"></div><div class="fpv-name">CAPA-2026-047 Gate 2 PPE Non-compliance</div><span class="fpv-tag s-od">Overdue</span><div class="fpv-meta">Critical</div></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--blue)"></div><div class="fpv-name">CAPA-2026-046 Forklift Safety Protocol</div><span class="fpv-tag s-open">Open</span><div class="fpv-meta">High</div></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--amber)"></div><div class="fpv-name">CAPA-2026-045 Chemical Storage Review</div><span class="fpv-tag s-pc">Pending</span><div class="fpv-meta">High</div></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--teal)"></div><div class="fpv-name">CAPA-2026-044 Document Control Gap</div><span class="fpv-tag s-cl">Closed</span><div class="fpv-meta">Medium</div></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:#94a3b8"></div><div class="fpv-name">CAPA-2026-043 Training Record Update</div><span class="fpv-tag s-def">Deferred</span><div class="fpv-meta">Low</div></div>
+      </div>
+    </div>
+
+    <!-- New Action -->
+    <div class="feat-panel" id="fp-new">
+      <div>
+        <span class="fp-badge" style="background:var(--teal-lt);color:var(--teal);border-color:#a7f3d0">New Action Form</span>
+        <div class="fp-title">Raise it right. First time.</div>
+        <div class="fp-sub">A structured form that captures every field needed to drive accountability — source, root cause, owner, due date, risk level, and corrective action description.</div>
+        <div class="fp-feats">
+          <div class="fp-feat"><div class="fp-feat-icon">📌</div><div><div class="fp-feat-title">Source type classification</div><div class="fp-feat-body">Classify where the action came from — audit, incident, inspection, customer complaint, management review, near miss, or observation.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">🔍</div><div><div class="fp-feat-title">Root cause analysis fields</div><div class="fp-feat-body">Capture the root cause alongside the immediate finding — so corrective actions address the cause, not just the symptom.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">⚡</div><div><div class="fp-feat-title">Priority & risk classification</div><div class="fp-feat-body">Critical, High, Medium, or Low priority — plus a separate risk rating. Critical actions trigger immediate overdue alerts if not closed on time.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">👤</div><div><div class="fp-feat-title">Owner assignment & due date</div><div class="fp-feat-body">Assign to a specific owner with a due date. The owner receives automatic reminders — and is notified the moment the action is raised.</div></div></div>
+        </div>
+      </div>
+      <div class="fp-visual">
+        <div class="fpv-hdr"><div class="fpv-title">New Action — Key Fields</div><span class="fpv-badge" style="background:rgba(29,158,117,0.2);color:#6ee7b7">Auto ID</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--blue)"></div><div class="fpv-name">Action ID</div><span class="fpv-tag s-open">CAPA-2026-048</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--teal)"></div><div class="fpv-name">Source Type</div><span class="fpv-tag s-cl">Internal Audit</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--red)"></div><div class="fpv-name">Priority</div><span class="fpv-tag s-high">High</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--amber)"></div><div class="fpv-name">Risk Level</div><span class="fpv-tag s-med">Medium</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--blue)"></div><div class="fpv-name">Due Date</div><span class="fpv-tag s-open">2026-07-15</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:#94a3b8"></div><div class="fpv-name">Status on creation</div><span class="fpv-tag s-open">Open</span></div>
+      </div>
+    </div>
+
+    <!-- Evidence -->
+    <div class="feat-panel" id="fp-evidence">
+      <div>
+        <span class="fp-badge" style="background:var(--amber-lt);color:var(--amber-dk);border-color:#fde68a">Evidence Upload</span>
+        <div class="fp-title">No evidence. No closure.</div>
+        <div class="fp-sub">Every corrective action requires documented evidence before it can be closed. Upload photos, reports, or documents — all stored against the action permanently.</div>
+        <div class="fp-feats">
+          <div class="fp-feat"><div class="fp-feat-icon">📎</div><div><div class="fp-feat-title">Drag-and-drop file upload</div><div class="fp-feat-body">Drag files directly onto the upload zone or browse — PDF, images, Word, Excel accepted. Files stored against the action permanently.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">🔗</div><div><div class="fp-feat-title">Linked to specific actions</div><div class="fp-feat-body">Evidence is always linked to a specific CAPA ID — auditors can pull all evidence for any action instantly, in any sequence.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">👤</div><div><div class="fp-feat-title">Uploader attribution</div><div class="fp-feat-body">Every uploaded file is attributed to the user who uploaded it — with timestamp, filename, and file size recorded in the audit trail.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">🔒</div><div><div class="fp-feat-title">Closure verification</div><div class="fp-feat-body">Actions cannot be closed without evidence. The system enforces this — the Close button is inactive until at least one evidence file is attached.</div></div></div>
+        </div>
+      </div>
+      <div class="fp-visual">
+        <div class="fpv-hdr"><div class="fpv-title">Evidence — CAPA-2026-047</div><span class="fpv-badge" style="background:rgba(239,159,39,0.2);color:var(--amber)">3 Files</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--red)"></div><div class="fpv-name">PPE_inspection_photo_gate2.jpg</div><span class="fpv-tag s-od">2.1 MB</span><div class="fpv-meta">2026-06-25</div></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--blue)"></div><div class="fpv-name">corrective_action_memo.pdf</div><span class="fpv-tag s-open">340 KB</span><div class="fpv-meta">2026-06-26</div></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--teal)"></div><div class="fpv-name">retraining_record_signed.pdf</div><span class="fpv-tag s-cl">512 KB</span><div class="fpv-meta">2026-06-27</div></div>
+        <div style="margin-top:12px;padding:10px;background:rgba(29,158,117,0.1);border:1px solid rgba(29,158,117,0.2);border-radius:7px;font-size:10px;color:#4ade80;font-weight:600;text-align:center">✓ Evidence verified — action eligible for closure</div>
+      </div>
+    </div>
+
+    <!-- Report Upload -->
+    <div class="feat-panel" id="fp-upload">
+      <div>
+        <span class="fp-badge" style="background:var(--blue-bg);color:var(--navy-md);border-color:var(--blue-lt)">Report Upload</span>
+        <div class="fp-title">Upload a report. Extract the actions.</div>
+        <div class="fp-sub">Upload an audit or inspection report and extract action items directly into the CAPA register — no manual re-entry of findings from PDFs or Word documents.</div>
+        <div class="fp-feats">
+          <div class="fp-feat"><div class="fp-feat-icon">📄</div><div><div class="fp-feat-title">Audit & inspection report upload</div><div class="fp-feat-body">Upload the source document — internal audit report, external audit findings, inspection report — directly into the system.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">⚡</div><div><div class="fp-feat-title">Extracted action items</div><div class="fp-feat-body">System extracts individual findings and presents them as separate actions — each ready to be assigned, prioritised, and tracked.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">🔗</div><div><div class="fp-feat-title">Linked to source report</div><div class="fp-feat-body">Every action extracted from a report retains its link to the source document — so you always know which audit or inspection generated it.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">✅</div><div><div class="fp-feat-title">Bulk action creation</div><div class="fp-feat-body">Create all extracted actions in one step — each gets its own CAPA ID, owner, and due date, ready to manage immediately.</div></div></div>
+        </div>
+      </div>
+      <div class="fp-visual">
+        <div class="fpv-hdr"><div class="fpv-title">Report Upload — Extracted Actions</div><span class="fpv-badge" style="background:rgba(55,138,221,0.2);color:#93c5fd">4 Found</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--red)"></div><div class="fpv-name">Finding 1: PPE non-compliance at Gate 2</div><span class="fpv-tag s-high">High</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--amber)"></div><div class="fpv-name">Finding 2: Forklift pre-use check not recorded</div><span class="fpv-tag s-med">Medium</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--amber)"></div><div class="fpv-name">Finding 3: Chemical storage area signage missing</div><span class="fpv-tag s-med">Medium</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--blue)"></div><div class="fpv-name">Finding 4: Training records not up to date</div><span class="fpv-tag s-low">Low</span></div>
+        <div style="margin-top:12px;padding:8px;background:rgba(55,138,221,0.08);border-radius:6px;font-size:10px;color:#93c5fd;font-weight:600;text-align:center">Source: Internal HSE Audit — 2026-06-20</div>
+      </div>
+    </div>
+
+    <!-- Reports -->
+    <div class="feat-panel" id="fp-reports">
+      <div>
+        <span class="fp-badge" style="background:var(--green-lt);color:var(--green);border-color:#86efac">Reports & Analytics</span>
+        <div class="fp-title">Six live charts. Real decisions.</div>
+        <div class="fp-sub">Dashboard analytics built from live CAPA data — no manual compilation, no spreadsheet pivots, no end-of-month reporting sessions.</div>
+        <div class="fp-feats">
+          <div class="fp-feat"><div class="fp-feat-icon">📊</div><div><div class="fp-feat-title">Open actions by department</div><div class="fp-feat-body">Bar chart showing where open actions are concentrated — instantly identify which departments are carrying the most outstanding risk.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">🍩</div><div><div class="fp-feat-title">Actions by status</div><div class="fp-feat-body">Visual breakdown of Open, Overdue, Pending Closure, Closed, and Deferred — the compliance health of your CAPA register at a glance.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">👤</div><div><div class="fp-feat-title">Open actions by owner</div><div class="fp-feat-body">See who owns the most outstanding actions — so workload can be redistributed and accountability enforced.</div></div></div>
+          <div class="fp-feat"><div class="fp-feat-icon">📤</div><div><div class="fp-feat-title">Export to CSV</div><div class="fp-feat-body">Full register export at any time — management review input, board reporting, or external audit evidence, in seconds.</div></div></div>
+        </div>
+      </div>
+      <div class="fp-visual">
+        <div class="fpv-hdr"><div class="fpv-title">Dashboard Charts</div><span class="fpv-badge" style="background:rgba(59,109,17,0.2);color:#86efac">Live</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--blue)"></div><div class="fpv-name">Open Actions by Department</div><span class="fpv-tag s-open">Bar chart</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--teal)"></div><div class="fpv-name">Actions by Status</div><span class="fpv-tag s-cl">Donut chart</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--amber)"></div><div class="fpv-name">Open Actions by Owner</div><span class="fpv-tag s-pc">Bar chart</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--red)"></div><div class="fpv-name">Actions by Source Type</div><span class="fpv-tag s-od">Bar chart</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--blue)"></div><div class="fpv-name">Actions by Business Unit</div><span class="fpv-tag s-open">Bar chart</span></div>
+        <div class="fpv-row"><div class="fpv-dot" style="background:var(--red)"></div><div class="fpv-name">High Risk Open Actions</div><span class="fpv-tag s-crit">⚠ Alert</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCE TYPES -->
+<section class="sec sources" id="sources">
+  <div class="sec-inner">
+    <div class="sec-ey">Action Sources</div>
+    <h2 class="sec-h2">Actions from <em>anywhere. Tracked everywhere.</em></h2>
+    <p class="sec-p">CAPA Manager™ accepts actions from every source your management system generates. Every finding, regardless of origin, lands in one register.</p>
+    <div class="src-grid">
+      <div class="src-card"><div class="src-icon">🔍</div><div class="src-name">Internal Audit</div></div>
+      <div class="src-card"><div class="src-icon">🏛️</div><div class="src-name">External Audit</div></div>
+      <div class="src-card"><div class="src-icon">⚠️</div><div class="src-name">Incident Report</div></div>
+      <div class="src-card"><div class="src-icon">📋</div><div class="src-name">Inspection Finding</div></div>
+      <div class="src-card"><div class="src-icon">📣</div><div class="src-name">Customer Complaint</div></div>
+      <div class="src-card"><div class="src-icon">🏢</div><div class="src-name">Management Review</div></div>
+      <div class="src-card"><div class="src-icon">🔺</div><div class="src-name">Near Miss</div></div>
+      <div class="src-card"><div class="src-icon">👁️</div><div class="src-name">Observation</div></div>
+      <div class="src-card"><div class="src-icon">⚙️</div><div class="src-name">Maintenance Finding</div></div>
+      <div class="src-card"><div class="src-icon">🏗️</div><div class="src-name">HSE Walkthrough</div></div>
+      <div class="src-card"><div class="src-icon">📊</div><div class="src-name">KPI Review</div></div>
+      <div class="src-card"><div class="src-icon">📝</div><div class="src-name">General Finding</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE FEATURES -->
+<section class="sec more-feat">
+  <div class="sec-inner">
+    <div class="sec-ey">More Features</div>
+    <h2 class="sec-h2">Built for <em>real compliance teams</em></h2>
+    <p class="sec-p">Every feature is designed around how QHSE compliance actually works — not how software vendors think it does.</p>
+    <div class="mf-grid">
+      <div class="mf-card"><div class="mf-icon">🔔</div><div class="mf-title">Automated reminder log</div><div class="mf-body">Every reminder sent — to every action owner, for every action — is logged with status (sent, failed, pending). Full reminder audit trail always available.</div></div>
+      <div class="mf-card"><div class="mf-icon">🏢</div><div class="mf-title">Multi-business unit</div><div class="mf-body">Switch between business units from the sidebar. Each BU has its own register view — admins see all units simultaneously for cross-organisation reporting.</div></div>
+      <div class="mf-card"><div class="mf-icon">🗑️</div><div class="mf-title">Deleted actions archive</div><div class="mf-body">Deleted actions are never permanently lost — they move to the Deleted Actions screen, visible to admins for recovery or audit evidence.</div></div>
+      <div class="mf-card"><div class="mf-icon">⏸️</div><div class="mf-title">Deferral workflow</div><div class="mf-body">Actions can be formally deferred with a reason and new due date — so legitimate delays are documented, not hidden, and don't distort overdue counts.</div></div>
+      <div class="mf-card"><div class="mf-icon">🔐</div><div class="mf-title">Role-based access</div><div class="mf-body">Admin users see everything and can manage all settings. Viewer users see the register but cannot create, edit, or close actions.</div></div>
+      <div class="mf-card"><div class="mf-icon">🕐</div><div class="mf-title">Status stepper</div><div class="mf-body">Every action detail view shows a visual status stepper — Open → In Progress → Pending Closure → Closed — so progress is visible at a glance.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec pricing" id="pricing">
+  <div class="sec-inner">
+    <div class="sec-ey">Pricing</div>
+    <h2 class="sec-h2">Simple pricing. <em>Coming soon.</em></h2>
+    <p class="sec-p">Pricing will be confirmed at launch. Register your interest now to receive early access pricing.</p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-sub">Small organisations · Up to 25 users</div>
+        <div class="plan-tbd">TBC at launch</div>
+        <div class="plan-note">✦ Early access pricing available</div>
+        <div class="plan-div"></div>
+        <div class="plan-feats">
+          <div class="plan-feat">Up to 25 users</div>
+          <div class="plan-feat">Action Register</div>
+          <div class="plan-feat">New Action form</div>
+          <div class="plan-feat">Evidence upload</div>
+          <div class="plan-feat">Automated reminders</div>
+          <div class="plan-feat">Dashboard analytics</div>
+          <div class="plan-feat">CSV export</div>
+        </div>
+        <a href="mailto:summitsrcauthority@gmail.com?subject=CAPA Manager Starter - Early Access" class="btn-plan">Register interest →</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">⭐ Most Popular</div>
+        <div class="plan-name">Professional</div>
+        <div class="plan-sub">Mid-size organisations · Up to 100 users</div>
+        <div class="plan-tbd" style="color:rgba(255,255,255,0.6)">TBC at launch</div>
+        <div class="plan-note">✦ Early access pricing available</div>
+        <div class="plan-div"></div>
+        <div class="plan-feats">
+          <div class="plan-feat">Up to 100 users</div>
+          <div class="plan-feat">All Starter features</div>
+          <div class="plan-feat">Report upload & extraction</div>
+          <div class="plan-feat">Multi-business unit support</div>
+          <div class="plan-feat">Deferral workflow</div>
+          <div class="plan-feat">Reminder log</div>
+          <div class="plan-feat">Priority support</div>
+        </div>
+        <a href="mailto:summitsrcauthority@gmail.com?subject=CAPA Manager Professional - Early Access" class="btn-plan">Register interest →</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-sub">Large organisations · Unlimited users</div>
+        <div class="plan-tbd">Custom pricing</div>
+        <div class="plan-note">✦ Contact us to discuss requirements</div>
+        <div class="plan-div"></div>
+        <div class="plan-feats">
+          <div class="plan-feat">Unlimited users</div>
+          <div class="plan-feat">All Professional features</div>
+          <div class="plan-feat">Dedicated onboarding</div>
+          <div class="plan-feat">SLA agreement</div>
+          <div class="plan-feat">API access</div>
+          <div class="plan-feat">Invoice billing available</div>
+          <div class="plan-feat">Multi-site support</div>
+        </div>
+        <a href="mailto:summitsrcauthority@gmail.com?subject=CAPA Manager Enterprise - Enquiry" class="btn-plan">Contact us →</a>
+      </div>
+    </div>
+    <p class="plans-note">Pricing confirmed at launch. Early registrants receive introductory pricing and priority onboarding.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-inner">
+    <h2>Correct. Prevent.<br><em>Improve.</em></h2>
+    <p>Register your interest in Summit Sync CAPA Manager™ today.</p>
+    <p class="cta-note">Early registrants receive introductory pricing and priority onboarding support.</p>
+    <a href="mailto:summitsrcauthority@gmail.com?subject=CAPA Manager - Early Access Registration" class="btn-a">🔔 Register for early access →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html"><img src="logo.png" alt="Summit" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="safetrack.html">SafeTrack™</a>
+      <a href="icore.html">iCORE</a>
+      <a href="docucontrol.html">DocuControl™</a>
+      <a href="capa.html">CAPA Manager™</a>
+      <a href="workflow.html">WorkFlow</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority.</div>
+  </div>
+</footer>
+
+<script>
+function showFeat(id, el) {
+  document.querySelectorAll('.feat-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+  document.getElementById('fp-' + id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

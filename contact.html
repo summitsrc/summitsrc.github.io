@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Summit Safety, Risk & Compliance Authority</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0D2B55; --navy-dk:#081D3A; --blue:#1A7FAD; --blue-lt:#2EA8D8;
+  --amber:#F5A623; --amber-dk:#D4880A; --slate:#64748B;
+  --off:#F0F7FB; --line:rgba(255,255,255,0.08); --line-lt:#E2E8F0;
+  --fd:'Barlow Condensed',sans-serif; --fb:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--navy);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 40px;height:66px;display:flex;align-items:center;gap:40px}
+.nav-links{display:flex;gap:24px;margin-left:auto;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:8px 18px;background:var(--amber);color:var(--navy-dk)!important;font-weight:700!important;border-radius:6px;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--amber-dk)!important}
+
+/* HERO */
+.hero{background:var(--navy-dk);padding:140px 40px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(26,127,173,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(26,127,173,0.07) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,transparent,black 30%,black 80%,transparent)}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.breadcrumb a{color:var(--blue-lt)}
+.breadcrumb a:hover{color:#fff}
+.ph-tag{display:inline-block;background:rgba(26,127,173,0.15);border:1px solid rgba(26,127,173,0.3);color:var(--blue-lt);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:22px}
+.ph-h1{font-family:var(--fd);font-size:clamp(40px,6vw,76px);font-weight:900;color:#fff;line-height:0.93;letter-spacing:-0.5px;text-transform:uppercase;margin-bottom:20px}
+.ph-h1 em{font-style:normal;color:var(--amber)}
+.ph-p{font-size:17px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:520px}
+
+/* MAIN CONTACT SECTION */
+.contact-sec{padding:80px 40px;background:#fff}
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start}
+
+/* LEFT — contact info */
+.contact-info{display:flex;flex-direction:column;gap:0}
+.ci-title{font-family:var(--fd);font-size:28px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:6px;letter-spacing:-0.3px}
+.ci-sub{font-size:14px;color:var(--slate);line-height:1.65;margin-bottom:32px}
+.ci-items{display:flex;flex-direction:column;gap:16px;margin-bottom:36px}
+.ci-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-radius:10px;border:1.5px solid var(--line-lt);transition:border-color 0.2s,background 0.2s}
+.ci-item:hover{border-color:var(--blue);background:var(--off)}
+.ci-icon{width:40px;height:40px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ci-label{font-size:10px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.ci-value{font-size:14px;font-weight:600;color:var(--navy);line-height:1.5}
+.ci-value a{color:var(--blue);transition:color 0.2s}
+.ci-value a:hover{color:var(--navy)}
+
+/* Services interest chips */
+.ci-services-title{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.ci-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.ci-chip{font-size:12px;font-weight:600;padding:6px 14px;border-radius:99px;background:var(--off);border:1.5px solid var(--line-lt);color:var(--navy);transition:background 0.2s,border-color 0.2s}
+.ci-chip:hover{background:#dbeafe;border-color:var(--blue);color:var(--blue)}
+
+/* Social */
+.ci-social{display:flex;gap:10px}
+.social-btn{display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:8px;border:1.5px solid var(--line-lt);font-size:12px;font-weight:700;color:var(--navy);transition:border-color 0.2s,background 0.2s}
+.social-btn:hover{border-color:var(--blue);background:var(--off)}
+
+/* RIGHT — form */
+.contact-form-wrap{background:var(--off);border-radius:16px;padding:36px;border:1.5px solid var(--line-lt)}
+.form-title{font-family:var(--fd);font-size:26px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:6px;letter-spacing:-0.3px}
+.form-sub{font-size:13px;color:var(--slate);margin-bottom:28px;line-height:1.6}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.5px}
+.finput,.fsel,.ftextarea{padding:10px 14px;border-radius:8px;border:1.5px solid #CBD5E1;background:#fff;font-size:14px;color:var(--navy);width:100%;font-family:var(--fb);transition:border-color 0.2s,box-shadow 0.2s}
+.finput:focus,.fsel:focus,.ftextarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,127,173,0.1)}
+.ftextarea{resize:vertical;min-height:120px}
+.fsel{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-full{margin-bottom:14px}
+.form-consent{display:flex;align-items:flex-start;gap:10px;margin-bottom:24px;font-size:12px;color:var(--slate);line-height:1.5}
+.form-consent input{margin-top:2px;flex-shrink:0;accent-color:var(--blue)}
+.btn-submit{width:100%;padding:14px;background:var(--navy);border:none;color:#fff;font-size:15px;font-weight:700;border-radius:8px;cursor:pointer;transition:background 0.2s,transform 0.15s;font-family:var(--fb)}
+.btn-submit:hover{background:var(--blue);transform:translateY(-1px)}
+.form-success{display:none;background:#f0fdf4;border:1.5px solid #22c55e;border-radius:10px;padding:20px;text-align:center;margin-top:16px}
+.form-success-icon{font-size:32px;margin-bottom:8px}
+.form-success-title{font-size:15px;font-weight:700;color:#15803d;margin-bottom:4px}
+.form-success-body{font-size:13px;color:#166534}
+.form-error{display:none;background:#FCEBEB;border:1.5px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:13px;color:#A32D2D;margin-bottom:14px;font-weight:600}
+
+/* MAP STRIP */
+.map-strip{background:var(--navy-dk);padding:64px 40px}
+.map-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.map-info .sec-ey{color:var(--amber);margin-bottom:12px}
+.map-title{font-family:var(--fd);font-size:clamp(26px,3vw,40px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:16px;letter-spacing:-0.3px}
+.map-title em{font-style:normal;color:var(--blue-lt)}
+.map-details{display:flex;flex-direction:column;gap:12px}
+.map-det{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,0.6)}
+.map-det strong{color:#fff}
+.map-frame{border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,0.1);height:280px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center}
+.map-placeholder{text-align:center;color:rgba(255,255,255,0.3)}
+.map-placeholder-icon{font-size:36px;margin-bottom:8px}
+.map-placeholder-text{font-size:13px}
+.map-link{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--blue-lt);font-weight:600}
+.map-link:hover{color:#fff}
+
+/* SERVICES QUICK LINKS */
+.quick-links{background:var(--off);padding:64px 40px}
+.ql-inner{max-width:1100px;margin:0 auto}
+.ql-title{font-family:var(--fd);font-size:clamp(24px,3vw,38px);font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:6px;letter-spacing:-0.3px}
+.ql-sub{font-size:14px;color:var(--slate);margin-bottom:28px}
+.ql-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ql-card{background:#fff;border-radius:10px;padding:20px;border:1.5px solid var(--line-lt);border-top:3px solid var(--blue);text-align:center;transition:box-shadow 0.2s,transform 0.2s}
+.ql-card:hover{box-shadow:0 6px 24px rgba(13,43,85,0.08);transform:translateY(-2px)}
+.ql-icon{font-size:22px;margin-bottom:10px}
+.ql-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.ql-link{font-size:12px;color:var(--blue);font-weight:600}
+.ql-link:hover{color:var(--navy)}
+
+/* FOOTER */
+footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:40px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.contact-inner{grid-template-columns:1fr}.map-inner{grid-template-columns:1fr}.ql-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.hero{padding:110px 20px 60px}.contact-sec{padding:60px 20px}.form-grid{grid-template-columns:1fr}.map-strip{padding:48px 20px}.quick-links{padding:48px 20px}.ql-grid{grid-template-columns:1fr 1fr}footer{padding:32px 20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:38px;width:auto;display:block"></a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="safetrack.html">SafeTrack™</a>
+    <a href="sync360.html">Sync 360°</a>
+    <a href="icore.html">iCORE</a>
+    <a href="workspace.html">Workspace</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="mailto:summitsrcauthority@gmail.com" class="nav-cta">Book a Consultation</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Contact</div>
+    <div class="ph-tag">Get in Touch</div>
+    <h1 class="ph-h1">Let's start the<br><em>conversation.</em></h1>
+    <p class="ph-p">Whether you're looking to implement an ISO system, strengthen your emergency preparedness, or explore our technology platforms — we'd love to hear from you.</p>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="contact-sec">
+  <div class="contact-inner">
+
+    <!-- LEFT -->
+    <div class="contact-info">
+      <div class="ci-title">Contact information</div>
+      <div class="ci-sub">Reach us directly by phone or email — or fill in the form and we'll get back to you within one business day.</div>
+
+      <div class="ci-items">
+        <div class="ci-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value">
+              <a href="tel:+12428076710">+1 (242) 807-6710</a><br>
+              <a href="tel:+12428083724">+1 (242) 808-3724</a>
+            </div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value"><a href="mailto:summitsrcauthority@gmail.com">summitsrcauthority@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-value"><a href="https://www.summitsrcgroup.com">www.summitsrcgroup.com</a></div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-value">Freeport, Grand Bahama<br>The Bahamas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ci-services-title">I'm interested in…</div>
+      <div class="ci-chips">
+        <span class="ci-chip">ISO Implementation</span>
+        <span class="ci-chip">Auditing & Compliance</span>
+        <span class="ci-chip">Training & Development</span>
+        <span class="ci-chip">Risk Management</span>
+        <span class="ci-chip">SafeTrack™</span>
+        <span class="ci-chip">Summit Sync 360°</span>
+        <span class="ci-chip">Dashboard Services</span>
+        <span class="ci-chip">Emergency Preparedness</span>
+      </div>
+
+      <div class="ci-social">
+        <a href="https://www.linkedin.com/company/summit-safety-risk-compliance-authority" target="_blank" class="social-btn">
+          <span>in</span> LinkedIn
+        </a>
+        <a href="mailto:summitsrcauthority@gmail.com" class="social-btn">
+          📧 Email us
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT — FORM -->
+    <div class="contact-form-wrap">
+      <div class="form-title">Send us a message</div>
+      <div class="form-sub">Fill in the form below and a member of our team will respond within one business day.</div>
+
+      <div id="form-error" class="form-error">Please fill in all required fields.</div>
+
+      <div class="form-grid">
+        <div class="fg">
+          <label>First name *</label>
+          <input class="finput" id="f-first" type="text" placeholder="Jane">
+        </div>
+        <div class="fg">
+          <label>Last name *</label>
+          <input class="finput" id="f-last" type="text" placeholder="Smith">
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="fg">
+          <label>Organisation *</label>
+          <input class="finput" id="f-org" type="text" placeholder="Your company name">
+        </div>
+        <div class="fg">
+          <label>Phone number</label>
+          <input class="finput" id="f-phone" type="tel" placeholder="+1 (242) 000-0000">
+        </div>
+      </div>
+
+      <div class="form-full fg" style="margin-bottom:14px">
+        <label>Email address *</label>
+        <input class="finput" id="f-email" type="email" placeholder="jane@company.com">
+      </div>
+
+      <div class="form-full fg" style="margin-bottom:14px">
+        <label>Service of interest *</label>
+        <select class="fsel" id="f-service">
+          <option value="">— Select a service —</option>
+          <option>ISO 9001 — Quality Management</option>
+          <option>ISO 14001 — Environmental Management</option>
+          <option>ISO 45001 — Occupational Health & Safety</option>
+          <option>ISO 22301 — Business Continuity</option>
+          <option>Internal / External Auditing</option>
+          <option>Training & Competence Development</option>
+          <option>Risk Management</option>
+          <option>Summit SafeTrack™</option>
+          <option>Summit Sync 360°</option>
+          <option>Dashboard & Data Services</option>
+          <option>Emergency Preparedness</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+
+      <div class="form-full fg" style="margin-bottom:14px">
+        <label>Message *</label>
+        <textarea class="ftextarea" id="f-message" placeholder="Tell us about your organisation and what you're looking to achieve…"></textarea>
+      </div>
+
+      <div class="form-consent">
+        <input type="checkbox" id="f-consent">
+        <label for="f-consent">I agree to Summit Safety, Risk & Compliance Authority contacting me regarding my enquiry. We will never share your information with third parties.</label>
+      </div>
+
+      <button class="btn-submit" onclick="submitForm()">Send message →</button>
+
+      <div class="form-success" id="form-success">
+        <div class="form-success-icon">✅</div>
+        <div class="form-success-title">Message sent successfully!</div>
+        <div class="form-success-body">Thank you for reaching out. A member of our team will be in touch within one business day.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAP / LOCATION -->
+<div class="map-strip">
+  <div class="map-inner">
+    <div class="map-info">
+      <div class="sec-ey">Our Location</div>
+      <div class="map-title">Based in <em>Freeport,</em><br>Grand Bahama</div>
+      <div class="map-details">
+        <div class="map-det">📍 <span>Freeport, Grand Bahama, The Bahamas</span></div>
+        <div class="map-det">📞 <span><strong>+1 (242) 807-6710</strong></span></div>
+        <div class="map-det">📞 <span><strong>+1 (242) 808-3724</strong></span></div>
+        <div class="map-det">📧 <span><strong>summitsrcauthority@gmail.com</strong></span></div>
+        <div class="map-det">🌐 <span><strong>www.summitsrcgroup.com</strong></span></div>
+        <div class="map-det">🕐 <span>Mon–Fri · 8:00 AM – 5:00 PM (EST)</span></div>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30362.23!2d-78.6999!3d26.5333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x892efc4b4b4b4b4b%3A0x0!2sFreeport%2C+Grand+Bahama%2C+Bahamas!5e0!3m2!1sen!2s!4v1234567890"
+        width="100%" height="280" style="border:0;border-radius:10px" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK SERVICE LINKS -->
+<div class="quick-links">
+  <div class="ql-inner">
+    <div class="ql-title">Explore our solutions</div>
+    <div class="ql-sub">Not sure where to start? Browse our services and find the right solution for your organisation.</div>
+    <div class="ql-grid">
+      <div class="ql-card">
+        <div class="ql-icon">⚙️</div>
+        <div class="ql-name">ISO Implementation & Auditing</div>
+        <a href="services.html" class="ql-link">View services →</a>
+      </div>
+      <div class="ql-card">
+        <div class="ql-icon">🚨</div>
+        <div class="ql-name">Summit SafeTrack™</div>
+        <a href="safetrack.html" class="ql-link">View SafeTrack™ →</a>
+      </div>
+      <div class="ql-card">
+        <div class="ql-icon">💻</div>
+        <div class="ql-name">Summit Sync 360°</div>
+        <a href="sync360.html" class="ql-link">View Sync 360° →</a>
+      </div>
+      <div class="ql-card">
+        <div class="ql-icon">👥</div>
+        <div class="ql-name">About Summit</div>
+        <a href="about.html" class="ql-link">Meet the team →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html"><img src="logo.png" alt="Summit" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="safetrack.html">SafeTrack™</a>
+      <a href="sync360.html">Sync 360°</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority.</div>
+  </div>
+</footer>
+
+<script>
+function submitForm() {
+  const first   = document.getElementById('f-first').value.trim();
+  const last    = document.getElementById('f-last').value.trim();
+  const org     = document.getElementById('f-org').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const service = document.getElementById('f-service').value;
+  const message = document.getElementById('f-message').value.trim();
+  const consent = document.getElementById('f-consent').checked;
+  const errEl   = document.getElementById('form-error');
+
+  errEl.style.display = 'none';
+
+  if (!first || !last || !org || !email || !service || !message) {
+    errEl.textContent = 'Please fill in all required fields.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (!email.includes('@')) {
+    errEl.textContent = 'Please enter a valid email address.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (!consent) {
+    errEl.textContent = 'Please agree to our contact policy to send your message.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const phone = document.getElementById('f-phone').value.trim();
+  const subject = encodeURIComponent(`Summit SRC Enquiry — ${service} — ${org}`);
+  const body = encodeURIComponent(
+`New enquiry from the Summit SRC website:
+
+Name:         ${first} ${last}
+Organisation: ${org}
+Email:        ${email}
+Phone:        ${phone || 'Not provided'}
+Service:      ${service}
+
+Message:
+${message}
+
+---
+Sent via www.summitsrcgroup.com/contact.html`
+  );
+
+  window.location.href = `mailto:summitsrcauthority@gmail.com?subject=${subject}&body=${body}`;
+
+  setTimeout(() => {
+    document.getElementById('form-success').style.display = 'block';
+    document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 800);
+}
+</script>
+</body>
+</html>

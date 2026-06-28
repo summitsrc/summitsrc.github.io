@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Summit Safety, Risk & Compliance Authority</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0D2B55; --navy-dk:#081D3A; --blue:#1A7FAD; --blue-lt:#2EA8D8;
+  --amber:#F5A623; --amber-dk:#D4880A; --slate:#64748B;
+  --off:#F0F7FB; --line:rgba(255,255,255,0.08); --line-lt:#E2E8F0;
+  --fd:'Barlow Condensed',sans-serif; --fb:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--navy);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 40px;height:66px;display:flex;align-items:center;gap:40px}
+.nav-brand{display:flex;flex-direction:column;line-height:1.1;flex-shrink:0}
+.nb1{font-family:var(--fd);font-size:17px;font-weight:900;color:#fff;letter-spacing:1.5px;text-transform:uppercase}
+.nb2{font-size:9px;font-weight:600;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;gap:24px;margin-left:auto;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:8px 18px;background:var(--amber);color:var(--navy-dk)!important;font-weight:700!important;border-radius:6px;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--amber-dk)!important}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy-dk);padding:140px 40px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(26,127,173,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(26,127,173,0.07) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,transparent,black 30%,black 80%,transparent)}
+.ph-inner{position:relative;max-width:1100px;margin:0 auto}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.breadcrumb a{color:var(--blue-lt)}
+.breadcrumb a:hover{color:#fff}
+.ph-tag{display:inline-block;background:rgba(26,127,173,0.15);border:1px solid rgba(26,127,173,0.3);color:var(--blue-lt);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:22px}
+.ph-h1{font-family:var(--fd);font-size:clamp(42px,6vw,76px);font-weight:900;color:#fff;line-height:0.93;letter-spacing:-0.5px;text-transform:uppercase;margin-bottom:20px}
+.ph-h1 em{font-style:normal;color:var(--amber)}
+.ph-p{font-size:17px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:560px}
+
+/* ANCHOR NAV */
+.anchor-nav{background:var(--navy);border-bottom:1px solid var(--line);padding:0 40px;position:sticky;top:66px;z-index:90}
+.anchor-nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0}
+.anav-link{padding:16px 20px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
+.anav-link:hover{color:#fff;border-bottom-color:rgba(255,255,255,0.2)}
+.anav-link.active{color:#fff;border-bottom-color:var(--amber)}
+
+/* SECTION BASE */
+.sec{padding:88px 40px}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.sec-h2{font-family:var(--fd);font-size:clamp(28px,4vw,46px);font-weight:900;text-transform:uppercase;line-height:1;color:var(--navy);letter-spacing:-0.5px;margin-bottom:14px}
+.sec-h2 em{font-style:normal;color:var(--blue)}
+.sec-p{font-size:15px;color:var(--slate);line-height:1.7;max-width:580px;margin-bottom:48px}
+
+/* ISO SECTION */
+.iso{background:#fff}
+.iso-standards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:48px}
+.iso-card{border-radius:12px;padding:24px 20px;border:1.5px solid var(--line-lt);border-top:4px solid var(--blue);transition:box-shadow 0.2s,transform 0.2s}
+.iso-card:hover{box-shadow:0 8px 28px rgba(13,43,85,0.1);transform:translateY(-2px)}
+.iso-std{font-size:15px;font-weight:800;color:var(--blue);margin-bottom:6px;letter-spacing:0.3px}
+.iso-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.iso-body{font-size:12px;color:var(--slate);line-height:1.55}
+
+.iso-services-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.iso-services-title{font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line-lt)}
+.iso-service-list{display:flex;flex-direction:column;gap:10px}
+.iso-service-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--slate);padding:10px 14px;border-radius:8px;border:1px solid var(--line-lt);background:#fff;transition:border-color 0.2s,background 0.2s}
+.iso-service-item:hover{border-color:var(--blue);background:var(--off)}
+.iso-service-item::before{content:'✓';color:var(--blue);font-weight:800;flex-shrink:0}
+
+/* PROCESS */
+.process-strip{background:var(--off);padding:48px 40px}
+.process-inner{max-width:1100px;margin:0 auto}
+.process-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:24px;text-align:center}
+.process-steps{display:flex;align-items:center;gap:0;overflow-x:auto}
+.ps{flex:1;min-width:110px;text-align:center;position:relative;padding:0 8px}
+.ps-circle{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.ps-label{font-size:12px;font-weight:700;color:var(--navy)}
+.ps-line{flex:1;height:2px;background:var(--line-lt);min-width:20px}
+.ps-line-filled{background:var(--blue)}
+
+/* AUDITING SECTION */
+.auditing{background:var(--off)}
+.audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.audit-card{background:#fff;border-radius:12px;padding:26px;border:1.5px solid var(--line-lt);border-left:4px solid var(--blue);transition:box-shadow 0.2s,transform 0.2s}
+.audit-card:hover{box-shadow:0 6px 24px rgba(13,43,85,0.08);transform:translateY(-2px)}
+.audit-icon{font-size:24px;margin-bottom:12px}
+.audit-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.audit-body{font-size:13px;color:var(--slate);line-height:1.65}
+
+/* TRAINING SECTION */
+.training{background:#fff}
+.training-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.training-programs{display:flex;flex-direction:column;gap:10px}
+.tp-item{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;border:1.5px solid var(--line-lt);transition:border-color 0.2s,transform 0.15s;cursor:default}
+.tp-item:hover{border-color:var(--blue);transform:translateX(4px)}
+.tp-icon{font-size:20px;flex-shrink:0}
+.tp-name{font-size:14px;font-weight:700;color:var(--navy)}
+.tp-sub{font-size:12px;color:var(--slate);margin-top:2px}
+.training-types{display:flex;flex-direction:column;gap:14px}
+.tt-card{background:var(--off);border-radius:10px;padding:20px 22px;border:1.5px solid var(--line-lt)}
+.tt-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.tt-body{font-size:13px;color:var(--slate);line-height:1.6}
+
+/* DASHBOARD SECTION */
+.dashboards{background:var(--navy-dk)}
+.dashboards .sec-ey{color:var(--amber)}
+.dashboards .sec-h2{color:#fff}
+.dashboards .sec-p{color:rgba(255,255,255,0.45)}
+.dash-vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px}
+.dash-box{border-radius:12px;padding:24px}
+.dash-box-bad{background:rgba(220,60,60,0.08);border:1.5px solid rgba(220,60,60,0.2)}
+.dash-box-good{background:rgba(26,127,173,0.1);border:1.5px solid rgba(26,127,173,0.25)}
+.dash-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.dash-label-bad{color:#f87171}
+.dash-label-good{color:var(--blue-lt)}
+.dash-points{display:flex;flex-direction:column;gap:10px}
+.dash-point{font-size:13px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:10px;line-height:1.4}
+.dash-point::before{font-weight:800;flex-shrink:0}
+.dash-bad::before{content:'✗';color:#f87171}
+.dash-good::before{content:'✓';color:var(--blue-lt)}
+.dash-includes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px}
+.dash-inc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:20px;transition:background 0.2s,border-color 0.2s}
+.dash-inc:hover{background:rgba(255,255,255,0.08);border-color:rgba(26,127,173,0.4)}
+.dash-inc-icon{font-size:20px;margin-bottom:10px}
+.dash-inc-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:5px}
+.dash-inc-body{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5}
+.dash-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;justify-content:center}
+.dash-tool{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.55);font-size:12px;font-weight:600;padding:6px 14px;border-radius:99px}
+.dash-price{text-align:center;background:rgba(245,166,35,0.08);border:1.5px solid rgba(245,166,35,0.25);border-radius:14px;padding:36px}
+.dash-price-tag{font-size:11px;font-weight:700;color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.dash-price-label{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:4px}
+.dash-price-amount{font-family:var(--fd);font-size:72px;font-weight:900;color:#fff;line-height:1}
+.dash-price-amount sup{font-size:32px;vertical-align:top;margin-top:12px}
+.dash-price-type{font-size:15px;color:rgba(255,255,255,0.35);margin-top:4px;margin-bottom:20px}
+.dash-price-items{display:flex;flex-direction:column;gap:8px;max-width:360px;margin:0 auto 24px;text-align:left}
+.dash-price-item{font-size:13px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:10px}
+.dash-price-item::before{content:'✓';color:var(--amber);font-weight:800;flex-shrink:0}
+
+/* CTA */
+.cta-strip{background:var(--blue);padding:80px 40px;text-align:center}
+.cta-strip h2{font-family:var(--fd);font-size:clamp(28px,4vw,50px);font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-0.5px;margin-bottom:14px;line-height:1}
+.cta-strip p{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:36px}
+.btn-a{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--amber);color:var(--navy-dk);font-size:15px;font-weight:700;border-radius:7px;transition:background 0.2s,transform 0.15s}
+.btn-a:hover{background:var(--amber-dk);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:40px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.iso-standards{grid-template-columns:repeat(2,1fr)}.iso-services-grid{grid-template-columns:1fr}.training-grid{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.page-hero{padding:110px 20px 60px}.sec{padding:60px 20px}.anchor-nav{padding:0 20px}.audit-grid{grid-template-columns:1fr}.iso-standards{grid-template-columns:1fr}.process-strip{padding:40px 20px}.cta-strip{padding:60px 20px}footer{padding:32px 20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:38px;width:auto;display:block"></a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="sync360.html">Our Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://clientportal.summitsrcgroup.com" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap" target="_blank">🔐 Admin Portal</a>
+    <a href="mailto:info@summitsrcgroup.com" class="nav-cta">Book a Consultation</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="ph-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Services</div>
+    <div class="ph-tag">Consulting Services</div>
+    <h1 class="ph-h1">Turning compliance<br>into <em>performance.</em></h1>
+    <p class="ph-p">Practical, expert-led consulting across ISO management systems, auditing, risk management, and training — built for Caribbean organisations.</p>
+  </div>
+</div>
+
+<!-- ANCHOR NAV -->
+<div class="anchor-nav">
+  <div class="anchor-nav-inner">
+    <a href="#iso" class="anav-link active">ISO Implementation</a>
+    <a href="#auditing" class="anav-link">Auditing &amp; Compliance</a>
+    <a href="#training" class="anav-link">Training &amp; Development</a>
+    <a href="#dashboards" class="anav-link">Dashboard &amp; Data Services</a>
+  </div>
+</div>
+
+<!-- ISO IMPLEMENTATION -->
+<section class="sec iso" id="iso">
+  <div class="sec-inner">
+    <div class="sec-ey">ISO Implementation &amp; Management</div>
+    <h2 class="sec-h2">Management systems that <em>actually work</em></h2>
+    <p class="sec-p">We design, implement, and maintain ISO management systems that go beyond certification — building real operational capability your team can sustain.</p>
+
+    <div class="iso-standards">
+      <div class="iso-card">
+        <div class="iso-std">ISO 9001</div>
+        <div class="iso-name">Quality Management Systems</div>
+        <div class="iso-body">Consistent quality, customer satisfaction, and continual improvement across your processes and services.</div>
+      </div>
+      <div class="iso-card">
+        <div class="iso-std">ISO 14001</div>
+        <div class="iso-name">Environmental Management Systems</div>
+        <div class="iso-body">Environmental compliance, impact reduction, and regulatory readiness for your operations.</div>
+      </div>
+      <div class="iso-card">
+        <div class="iso-std">ISO 45001</div>
+        <div class="iso-name">Occupational Health &amp; Safety</div>
+        <div class="iso-body">Workplace safety systems that protect people, reduce incidents, and demonstrate due diligence.</div>
+      </div>
+      <div class="iso-card">
+        <div class="iso-std">ISO 22301</div>
+        <div class="iso-name">Business Continuity Management</div>
+        <div class="iso-body">Resilience planning to keep your organisation operational when disruptions occur.</div>
+      </div>
+    </div>
+
+    <div class="iso-services-grid">
+      <div>
+        <div class="iso-services-title">Implementation Services</div>
+        <div class="iso-service-list">
+          <div class="iso-service-item">Gap assessments &amp; readiness reviews</div>
+          <div class="iso-service-item">Management system design</div>
+          <div class="iso-service-item">Policy &amp; procedure development</div>
+          <div class="iso-service-item">Risk assessments &amp; process mapping</div>
+          <div class="iso-service-item">KPI development &amp; monitoring</div>
+          <div class="iso-service-item">Internal audit programmes</div>
+          <div class="iso-service-item">Management reviews</div>
+          <div class="iso-service-item">Certification readiness support</div>
+          <div class="iso-service-item">Surveillance audit preparation</div>
+          <div class="iso-service-item">Continual improvement programmes</div>
+        </div>
+      </div>
+      <div>
+        <div class="iso-services-title">Our Implementation Process</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Assess</div><div style="font-size:13px;color:var(--slate)">Gap assessment against the standard to establish your baseline and define the scope of work.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Design</div><div style="font-size:13px;color:var(--slate)">System design tailored to your organisation — policies, procedures, and process documentation.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Implement &amp; Train</div><div style="font-size:13px;color:var(--slate)">Roll out the system with your team, building internal competence at every level.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Audit &amp; Certify</div><div style="font-size:13px;color:var(--slate)">Internal audit programme, management review, and certification body preparation.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Improve</div><div style="font-size:13px;color:var(--slate)">Ongoing support to maintain certification and drive continual improvement across the system.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDITING -->
+<section class="sec auditing" id="auditing">
+  <div class="sec-inner">
+    <div class="sec-ey">Auditing &amp; Compliance</div>
+    <h2 class="sec-h2">Risk-based audits that <em>strengthen performance</em></h2>
+    <p class="sec-p">Our audits go beyond finding nonconformances — they identify opportunities to improve performance, reduce risk, and build confidence in your management systems.</p>
+    <div class="audit-grid">
+      <div class="audit-card">
+        <div class="audit-icon">🔍</div>
+        <div class="audit-title">Internal Audits</div>
+        <div class="audit-body">Structured internal audits conducted against ISO standards and your own documented requirements, with findings and improvement recommendations.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-icon">🏭</div>
+        <div class="audit-title">Supplier Audits</div>
+        <div class="audit-body">Evaluate supplier compliance and performance against your quality, safety, and environmental requirements before and during engagement.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-icon">📋</div>
+        <div class="audit-title">Compliance Audits</div>
+        <div class="audit-body">Systematic review of your operations against applicable legal, regulatory, and contractual compliance obligations.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-icon">📊</div>
+        <div class="audit-title">Gap Assessments</div>
+        <div class="audit-body">Benchmark your current management system against ISO requirements to identify gaps and prioritise your improvement roadmap.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-icon">🎯</div>
+        <div class="audit-title">Surveillance Audit Preparation</div>
+        <div class="audit-body">Pre-surveillance reviews to ensure your system is maintained and ready for certification body visits.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-icon">📈</div>
+        <div class="audit-title">Audit Programme Development</div>
+        <div class="audit-body">Design and implement a risk-based internal audit programme your team can manage independently with confidence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="sec training" id="training">
+  <div class="sec-inner">
+    <div class="sec-ey">Training &amp; Competence Development</div>
+    <h2 class="sec-h2">Building capability <em>at every level</em></h2>
+    <p class="sec-p">Customised training programmes designed for your team, your industry, and your management system — from frontline workers to executive leadership.</p>
+    <div class="training-grid">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line-lt)">Who We Train</div>
+        <div class="training-programs">
+          <div class="tp-item">
+            <div class="tp-icon">👷</div>
+            <div><div class="tp-name">Frontline Personnel</div><div class="tp-sub">ISO awareness, safety procedures, emergency response</div></div>
+          </div>
+          <div class="tp-item">
+            <div class="tp-icon">👔</div>
+            <div><div class="tp-name">Supervisors &amp; Managers</div><div class="tp-sub">System ownership, audit readiness, KPI management</div></div>
+          </div>
+          <div class="tp-item">
+            <div class="tp-icon">🏢</div>
+            <div><div class="tp-name">Executive Leadership</div><div class="tp-sub">Management review, strategic risk, leadership obligations</div></div>
+          </div>
+          <div class="tp-item">
+            <div class="tp-icon">🔍</div>
+            <div><div class="tp-name">Internal Auditors</div><div class="tp-sub">Audit techniques, findings, reporting, CAPA</div></div>
+          </div>
+          <div class="tp-item">
+            <div class="tp-icon">🚨</div>
+            <div><div class="tp-name">Emergency Response Teams</div><div class="tp-sub">Drill facilitation, accountability, incident command</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line-lt)">Training Programmes</div>
+        <div class="training-types">
+          <div class="tt-card">
+            <div class="tt-title">ISO Awareness Training</div>
+            <div class="tt-body">Foundation-level training on ISO standards, requirements, and what they mean for your team's day-to-day work.</div>
+          </div>
+          <div class="tt-card">
+            <div class="tt-title">Internal Auditor Training</div>
+            <div class="tt-body">Practical training to develop competent internal auditors who can plan, conduct, and report audits confidently.</div>
+          </div>
+          <div class="tt-card">
+            <div class="tt-title">Risk Assessment Workshops</div>
+            <div class="tt-body">Hands-on workshops to identify, evaluate, and treat risks across your operations using proven methodologies.</div>
+          </div>
+          <div class="tt-card">
+            <div class="tt-title">Emergency Response Training</div>
+            <div class="tt-body">Scenario-based training for emergency response teams covering accountability, mustering, and incident command.</div>
+          </div>
+          <div class="tt-card">
+            <div class="tt-title">Toolbox Talks</div>
+            <div class="tt-body">Short, focused safety briefings delivered on-site to keep your team informed, engaged, and compliant.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARDS -->
+<section class="sec dashboards" id="dashboards">
+  <div class="sec-inner">
+    <div class="sec-ey">Dashboard &amp; Data Services</div>
+    <h2 class="sec-h2">You don't need expensive software.<br><em>You need better visibility.</em></h2>
+    <p class="sec-p">Most businesses already have valuable data in the tools they use every day. The challenge isn't the data — it's how it's organised and used. We turn your existing data into clear, actionable dashboards.</p>
+
+    <div class="dash-vs">
+      <div class="dash-box dash-box-bad">
+        <div class="dash-label dash-label-bad">✗ The problem</div>
+        <div class="dash-points">
+          <div class="dash-point dash-bad">Disorganised data across spreadsheets and reports</div>
+          <div class="dash-point dash-bad">Hours wasted on manual reporting every week</div>
+          <div class="dash-point dash-bad">No clear picture of what's working and what isn't</div>
+          <div class="dash-point dash-bad">Decisions made on gut feeling, not data</div>
+          <div class="dash-point dash-bad">Issues identified too late to act on</div>
+        </div>
+      </div>
+      <div class="dash-box dash-box-good">
+        <div class="dash-label dash-label-good">✓ What we deliver</div>
+        <div class="dash-points">
+          <div class="dash-point dash-good">One clear dashboard with all your key metrics</div>
+          <div class="dash-point dash-good">Automated reporting that saves hours every week</div>
+          <div class="dash-point dash-good">Real-time visibility into performance and trends</div>
+          <div class="dash-point dash-good">Data-driven decisions at every level of the business</div>
+          <div class="dash-point dash-good">Early warning signals before issues escalate</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;text-align:center">We work with tools you already have</div>
+    <div class="dash-tools">
+      <span class="dash-tool">📊 Excel Spreadsheets</span>
+      <span class="dash-tool">📗 Google Sheets</span>
+      <span class="dash-tool">📁 Existing Reports</span>
+      <span class="dash-tool">🗂 Operational Records</span>
+      <span class="dash-tool">📧 Email &amp; Feedback Logs</span>
+      <span class="dash-tool">👥 HR &amp; Training Records</span>
+      <span class="dash-tool">📅 Attendance Data</span>
+      <span class="dash-tool">💰 Sales &amp; Financial Data</span>
+    </div>
+
+    <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;text-align:center">What's included in every dashboard</div>
+    <div class="dash-includes">
+      <div class="dash-inc">
+        <div class="dash-inc-icon">📊</div>
+        <div class="dash-inc-title">Interactive Dashboard</div>
+        <div class="dash-inc-body">Easy-to-use, interactive dashboards tailored to your business and the decisions you need to make.</div>
+      </div>
+      <div class="dash-inc">
+        <div class="dash-inc-icon">🎯</div>
+        <div class="dash-inc-title">5 Key Performance Indicators</div>
+        <div class="dash-inc-body">We identify and track the KPIs that matter most to your operation and strategic goals.</div>
+      </div>
+      <div class="dash-inc">
+        <div class="dash-inc-icon">📋</div>
+        <div class="dash-inc-title">Executive Summary View</div>
+        <div class="dash-inc-body">A snapshot of your business performance at a glance — built for leadership decision-making.</div>
+      </div>
+      <div class="dash-inc">
+        <div class="dash-inc-icon">📈</div>
+        <div class="dash-inc-title">Data Visualisation Suite</div>
+        <div class="dash-inc-body">Professional charts and visualisations that turn raw data into insights you can act on immediately.</div>
+      </div>
+      <div class="dash-inc">
+        <div class="dash-inc-icon">🎓</div>
+        <div class="dash-inc-title">User Training Session</div>
+        <div class="dash-inc-body">We walk you through your dashboard so you and your team can use it with confidence from day one.</div>
+      </div>
+      <div class="dash-inc">
+        <div class="dash-inc-icon">🛟</div>
+        <div class="dash-inc-title">30 Days Support</div>
+        <div class="dash-inc-body">30 days of post-delivery support to ensure you get maximum value from your new dashboard.</div>
+      </div>
+    </div>
+
+    <div class="dash-price">
+      <div class="dash-price-tag">⭐ Introductory Offer</div>
+      <div class="dash-price-label">One-time package price</div>
+      <div class="dash-price-amount"><sup>$</sup>995</div>
+      <div class="dash-price-type">One-time · No ongoing fees</div>
+      <div class="dash-price-items">
+        <div class="dash-price-item">Interactive dashboard built to your business</div>
+        <div class="dash-price-item">5 KPIs tracked and visualised</div>
+        <div class="dash-price-item">Executive summary view</div>
+        <div class="dash-price-item">Data visualisation suite</div>
+        <div class="dash-price-item">User training session included</div>
+        <div class="dash-price-item">30 days of post-delivery support</div>
+      </div>
+      <a href="mailto:info@summitsrcgroup.com" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--amber);color:var(--navy-dk);font-size:15px;font-weight:700;border-radius:8px;transition:background 0.2s">Let's build your dashboard →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to strengthen your management systems?</h2>
+  <p>Book a free consultation to discuss how Summit can support your organisation.</p>
+  <a href="mailto:info@summitsrcgroup.com" class="btn-a">Schedule a consultation →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="safetrack.html">SafeTrack™</a>
+      <a href="index.html#team">About</a>
+      <a href="mailto:info@summitsrcgroup.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority.</div>
+  </div>
+</footer>
+
+<script>
+// Highlight anchor nav on scroll
+const sections = document.querySelectorAll('#iso, #auditing, #training, #dashboards');
+const navLinks = document.querySelectorAll('.anav-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+  navLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

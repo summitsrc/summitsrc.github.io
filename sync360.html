@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Products — Summit Safety, Risk & Compliance Authority</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D2B55;--navy-dk:#081D3A;--blue:#1A7FAD;--blue-lt:#2EA8D8;
+  --amber:#F5A623;--amber-dk:#D4880A;--slate:#64748B;
+  --off:#F0F7FB;--line:rgba(255,255,255,0.08);--line-lt:#E2E8F0;
+  --fd:'Barlow Condensed',sans-serif;--fb:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--navy);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 40px;height:66px;display:flex;align-items:center;gap:40px}
+.nav-links{display:flex;gap:20px;margin-left:auto;align-items:center;flex-wrap:wrap}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:8px 18px;background:var(--amber);color:var(--navy-dk)!important;font-weight:700!important;border-radius:6px}
+.nav-cta:hover{background:var(--amber-dk)!important}
+.nav-portal{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;white-space:nowrap}
+
+/* HERO */
+.hero{background:var(--navy-dk);padding:140px 40px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(26,127,173,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(26,127,173,0.07) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,transparent,black 25%,black 80%,transparent)}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+.breadcrumb a{color:var(--blue-lt)}
+.ph-tag{display:inline-block;background:rgba(26,127,173,0.15);border:1px solid rgba(26,127,173,0.3);color:var(--blue-lt);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:22px}
+.ph-h1{font-family:var(--fd);font-size:clamp(42px,6vw,76px);font-weight:900;color:#fff;line-height:0.93;letter-spacing:-0.5px;text-transform:uppercase;margin-bottom:20px}
+.ph-h1 em{font-style:normal;color:var(--amber)}
+.ph-p{font-size:17px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:560px}
+
+/* CONSULTING STRIP */
+.consulting-strip{background:var(--navy);border-bottom:1px solid var(--line);padding:32px 40px}
+.cs-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cs-left h3{font-family:var(--fd);font-size:26px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px}
+.cs-left p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.65}
+.cs-right{display:flex;flex-direction:column;gap:10px}
+.cs-item{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.6)}
+.cs-item::before{content:'✓';color:var(--amber);font-weight:800;flex-shrink:0}
+
+/* SECTION */
+.sec{padding:80px 40px}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.sec-h2{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;line-height:1;color:var(--navy);letter-spacing:-0.5px;margin-bottom:14px}
+.sec-h2 em{font-style:normal;color:var(--blue)}
+.sec-p{font-size:15px;color:var(--slate);line-height:1.7;max-width:600px;margin-bottom:48px}
+
+/* PRODUCT CARDS */
+.products-sec{background:var(--off)}
+.product-card{background:#fff;border-radius:16px;border:1.5px solid var(--line-lt);overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;margin-bottom:20px}
+.product-card:hover{box-shadow:0 12px 40px rgba(13,43,85,0.1);transform:translateY(-2px)}
+.product-card-inner{display:grid;grid-template-columns:280px 1fr;min-height:200px}
+.product-brand{padding:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-right:1.5px solid var(--line-lt)}
+.product-brand img{max-height:80px;width:auto;object-fit:contain;margin-bottom:14px}
+.product-brand-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.product-brand-tag{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px}
+.tag-live{background:#dbeafe;color:#1e40af}
+.tag-soon{background:var(--amber);color:var(--navy-dk)}
+.product-content{padding:32px}
+.product-tagline{font-size:11px;font-weight:700;color:var(--slate);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.product-title{font-family:var(--fd);font-size:26px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:10px;line-height:1;letter-spacing:-0.3px}
+.product-desc{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:20px}
+.product-features{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.pf-chip{font-size:11px;font-weight:600;padding:4px 11px;border-radius:99px;background:var(--off);border:1px solid var(--line-lt);color:var(--navy)}
+.product-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:9px 20px;border-radius:7px;transition:background 0.2s,transform 0.15s}
+.link-primary{background:var(--navy);color:#fff}
+.link-primary:hover{background:var(--blue);transform:translateY(-1px)}
+.link-ghost{background:transparent;border:1.5px solid var(--line-lt);color:var(--navy)}
+.link-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ACCENT BORDERS */
+.accent-blue{border-left:5px solid var(--blue)}
+.accent-amber{border-left:5px solid var(--amber)}
+.accent-cyan{border-left:5px solid #00B0C8}
+.accent-teal{border-left:5px solid #1D9E75}
+.accent-wf{border-left:5px solid #0F2D5A}
+.accent-ws{border-left:5px solid #00B4D8}
+
+/* WORKSPACE SPECIAL */
+.workspace-card{background:var(--navy-dk);border-radius:16px;border:1.5px solid rgba(0,180,216,0.3);padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:20px}
+.wc-left h3{font-family:var(--fd);font-size:30px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px;line-height:1}
+.wc-left h3 em{font-style:normal;color:#00B4D8}
+.wc-left p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px}
+.wc-right{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wc-feat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px;font-size:12px;color:rgba(255,255,255,0.6);display:flex;align-items:flex-start;gap:8px}
+.wc-feat::before{content:'✓';color:#00B4D8;font-weight:800;flex-shrink:0;margin-top:1px}
+
+/* CTA */
+.cta-strip{background:var(--blue);padding:80px 40px;text-align:center}
+.cta-strip h2{font-family:var(--fd);font-size:clamp(28px,4vw,52px);font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-0.5px;margin-bottom:14px;line-height:1}
+.cta-strip p{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:36px}
+.btn-a{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--amber);color:var(--navy-dk);font-size:15px;font-weight:700;border-radius:7px;transition:background 0.2s,transform 0.15s}
+.btn-a:hover{background:var(--amber-dk);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:40px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+@media(max-width:1024px){.product-card-inner{grid-template-columns:1fr}.product-brand{border-right:none;border-bottom:1.5px solid var(--line-lt);padding:24px}.cs-inner{grid-template-columns:1fr}.workspace-card{grid-template-columns:1fr}.wc-right{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:0 16px}.nav-links{display:none}.hero{padding:110px 20px 60px}.sec{padding:56px 20px}.consulting-strip{padding:24px 20px}.cta-strip{padding:60px 20px}footer{padding:32px 20px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html"><img src="logo.png" alt="Summit" style="height:38px;width:auto;display:block"></a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="sync360.html">Our Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://clientportal.summitsrcgroup.com" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap" target="_blank">🔐 Admin Portal</a>
+    <a href="mailto:info@summitsrcgroup.com" class="nav-cta">Book a Consultation</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Our Products</div>
+    <div class="ph-tag">Summit Sync 360° Ecosystem</div>
+    <h1 class="ph-h1">Consulting + technology.<br><em>Built together.</em></h1>
+    <p class="ph-p">Summit delivers expert consulting services alongside a growing suite of purpose-built compliance and safety applications — designed to work together and built for the Caribbean.</p>
+  </div>
+</section>
+
+<!-- CONSULTING STRIP -->
+<div class="consulting-strip">
+  <div class="cs-inner">
+    <div class="cs-left">
+      <h3>Our consulting services</h3>
+      <p>Behind every product is a team of ISO-certified consultants. We don't just sell software — we implement management systems, run audits, and train your team.</p>
+      <a href="services.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--amber)">View all services →</a>
+    </div>
+    <div class="cs-right">
+      <div class="cs-item">ISO 9001, 14001, 45001 & 22301 implementation</div>
+      <div class="cs-item">Internal & external auditing</div>
+      <div class="cs-item">Training & competence development</div>
+      <div class="cs-item">Risk management</div>
+      <div class="cs-item">Dashboard & data services</div>
+      <div class="cs-item">Emergency preparedness</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="sec products-sec" id="products">
+  <div class="sec-inner">
+    <div class="sec-ey">Software Products</div>
+    <h2 class="sec-h2">Six applications. <em>One ecosystem.</em></h2>
+    <p class="sec-p">Every product is built to solve a specific operational problem — and every product works better alongside the others.</p>
+
+    <!-- SafeTrack -->
+    <div class="product-card accent-blue">
+      <div class="product-card-inner">
+        <div class="product-brand">
+          <img src="logo-safetrack.png" alt="Summit SafeTrack">
+          <div class="product-brand-name">Summit SafeTrack™</div>
+          <span class="product-brand-tag tag-live">✅ Available Now</span>
+        </div>
+        <div class="product-content">
+          <div class="product-tagline">Track · Account · Respond</div>
+          <div class="product-title">Emergency accountability & mustering</div>
+          <div class="product-desc">A browser-based platform that gives safety teams a live headcount the moment a drill starts — contractor check-ins, zone musters, visitor management, and drill reports in seconds. No installs, no hardware.</div>
+          <div class="product-features">
+            <span class="pf-chip">Gate contractor check-in</span>
+            <span class="pf-chip">Zone A & B muster tablets</span>
+            <span class="pf-chip">Live command center</span>
+            <span class="pf-chip">Visitor management</span>
+            <span class="pf-chip">PDF drill reports</span>
+            <span class="pf-chip">14-day free trial</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="https://summitsrc.github.io/summitsafetrack/" class="product-link link-primary">⚡ Launch app</a>
+            <a href="safetrack.html" class="product-link link-ghost">View page →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- iCORE -->
+    <div class="product-card accent-cyan">
+      <div class="product-card-inner">
+        <div class="product-brand" style="background:var(--off)">
+          <img src="logo-icore.png" alt="Summit Sync iCORE">
+          <div class="product-brand-name">Summit Sync iCORE</div>
+          <span class="product-brand-tag tag-soon">Coming Soon</span>
+        </div>
+        <div class="product-content">
+          <div class="product-tagline">Incidents · Actions · Documents · Under Control</div>
+          <div class="product-title">Compliance management for ISO organisations</div>
+          <div class="product-desc">The first module suite of Summit Sync 360° — covering incident management, corrective action tracking, and document control in one connected system. Built for ISO 9001, 14001, 45001, and 22301.</div>
+          <div class="product-features">
+            <span class="pf-chip">Incident management</span>
+            <span class="pf-chip">CAPA tracker</span>
+            <span class="pf-chip">Document control</span>
+            <span class="pf-chip">Executive dashboard</span>
+            <span class="pf-chip">Dark mode</span>
+            <span class="pf-chip">ISO clause tagging</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="icore.html" class="product-link link-primary">Explore iCORE →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DocuControl -->
+    <div class="product-card accent-cyan">
+      <div class="product-card-inner">
+        <div class="product-brand" style="background:var(--off)">
+          <img src="logo-docucontrol.png" alt="DocuControl">
+          <div class="product-brand-name">Summit Sync DocuControl™</div>
+          <span class="product-brand-tag tag-soon">Coming Soon</span>
+        </div>
+        <div class="product-content">
+          <div class="product-tagline">Manage · Secure · Comply</div>
+          <div class="product-title">Document control — audit-ready always</div>
+          <div class="product-desc">A full document control platform covering version control, review and approval workflows, read-and-acknowledge tracking, ISO clause tagging, and a complete audit trail. Replace shared drives and email chains permanently.</div>
+          <div class="product-features">
+            <span class="pf-chip">9 document status stages</span>
+            <span class="pf-chip">Approval workflows</span>
+            <span class="pf-chip">Acknowledgement tracking</span>
+            <span class="pf-chip">Audit trail</span>
+            <span class="pf-chip">10 document types</span>
+            <span class="pf-chip">ISO clause tagging</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="docucontrol.html" class="product-link link-primary">Explore DocuControl™ →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAPA Manager -->
+    <div class="product-card accent-teal">
+      <div class="product-card-inner">
+        <div class="product-brand" style="background:var(--off)">
+          <img src="logo-capa.png" alt="CAPA Manager">
+          <div class="product-brand-name">Summit Sync CAPA Manager™</div>
+          <span class="product-brand-tag tag-soon">Coming Soon</span>
+        </div>
+        <div class="product-content">
+          <div class="product-tagline">Correct · Prevent · Improve</div>
+          <div class="product-title">CAPA tracking from source to closed</div>
+          <div class="product-desc">Full corrective and preventive action management built on the PDCA cycle. Raise actions from any source — audits, incidents, complaints, inspections — track evidence, automate reminders, and close with verification.</div>
+          <div class="product-features">
+            <span class="pf-chip">PDCA workflow</span>
+            <span class="pf-chip">Evidence upload</span>
+            <span class="pf-chip">Report extraction</span>
+            <span class="pf-chip">Auto reminders</span>
+            <span class="pf-chip">12 source types</span>
+            <span class="pf-chip">Live analytics</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="capa.html" class="product-link link-primary">Explore CAPA Manager™ →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WorkFlow -->
+    <div class="product-card accent-wf">
+      <div class="product-card-inner">
+        <div class="product-brand" style="background:var(--off)">
+          <img src="logo-workflow.png" alt="Summit WorkFlow">
+          <div class="product-brand-name">Summit WorkFlow</div>
+          <span class="product-brand-tag tag-soon">Coming Soon</span>
+        </div>
+        <div class="product-content">
+          <div class="product-tagline">Assign · Track · Complete</div>
+          <div class="product-title">Work order management for site teams</div>
+          <div class="product-desc">A full work order management platform for maintenance, safety, facilities, and operations teams. Assign tasks, track progress on a Kanban board, manage approvals, and close work faster — with reusable templates and live reports.</div>
+          <div class="product-features">
+            <span class="pf-chip">Work order register</span>
+            <span class="pf-chip">Kanban board</span>
+            <span class="pf-chip">Approval workflow</span>
+            <span class="pf-chip">12 status stages</span>
+            <span class="pf-chip">Reusable templates</span>
+            <span class="pf-chip">PDF & Excel export</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="workflow.html" class="product-link link-primary">Explore WorkFlow →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workspace -->
+    <div class="workspace-card">
+      <div class="wc-left">
+        <h3>Summit <em>Admin Portal</em></h3>
+        <p>The secure digital operating platform behind every Summit Sync application. One login gives your organisation access to licensing, software downloads, support tickets, user management, device management, and all announcements — in one clean client portal.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="workspace.html" style="display:inline-flex;align-items:center;gap:6px;padding:11px 22px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;font-size:13px;font-weight:700;border-radius:7px">🔐 Learn about Admin Portal →</a>
+        </div>
+      </div>
+      <div class="wc-right">
+        <div class="wc-feat">Single login for all apps</div>
+        <div class="wc-feat">Licence management</div>
+        <div class="wc-feat">Software downloads & patches</div>
+        <div class="wc-feat">Support ticket system</div>
+        <div class="wc-feat">Device management</div>
+        <div class="wc-feat">User & org management</div>
+        <div class="wc-feat">Notices & announcements</div>
+        <div class="wc-feat">Knowledge base & training</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Not sure where to start?</h2>
+  <p>Book a free consultation and we'll recommend the right combination of services and products for your organisation.</p>
+  <a href="mailto:info@summitsrcgroup.com" class="btn-a">Book a free consultation →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html"><img src="logo.png" alt="Summit" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="sync360.html">Our Products</a>
+      <a href="safetrack.html">SafeTrack™</a>
+      <a href="icore.html">iCORE</a>
+      <a href="docucontrol.html">DocuControl™</a>
+      <a href="capa.html">CAPA Manager™</a>
+      <a href="workflow.html">WorkFlow</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority.</div>
+  </div>
+</footer>
+</body>
+</html>

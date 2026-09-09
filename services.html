@@ -8,10 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:#0D2B55; --navy-dk:#081D3A; --blue:#1A7FAD; --blue-lt:#2EA8D8;
-  --amber:#F5A623; --amber-dk:#D4880A; --slate:#64748B;
-  --off:#F0F7FB; --line:rgba(255,255,255,0.08); --line-lt:#E2E8F0;
-  --fd:'Barlow Condensed',sans-serif; --fb:'Inter',sans-serif;
+ --navy:#0D2B55; --navy-dk:#081D3A; --blue:#1A7FAD; --blue-lt:#2EA8D8;
+ --amber:#F5A623; --amber-dk:#D4880A; --slate:#64748B;
+ --off:#F0F7FB; --line:rgba(255,255,255,0.08); --line-lt:#E2E8F0;
+ --fd:'Barlow Condensed',sans-serif; --fb:'Inter',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -70,7 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,0.97
 .iso-service-list{display:flex;flex-direction:column;gap:10px}
 .iso-service-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--slate);padding:10px 14px;border-radius:8px;border:1px solid var(--line-lt);background:#fff;transition:border-color 0.2s,background 0.2s}
 .iso-service-item:hover{border-color:var(--blue);background:var(--off)}
-.iso-service-item::before{content:'✓';color:var(--blue);font-weight:800;flex-shrink:0}
+.iso-service-item::before{content:'';color:var(--blue);font-weight:800;flex-shrink:0}
 
 /* PROCESS */
 .process-strip{background:var(--off);padding:48px 40px}
@@ -121,8 +121,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,0.97
 .dash-points{display:flex;flex-direction:column;gap:10px}
 .dash-point{font-size:13px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:10px;line-height:1.4}
 .dash-point::before{font-weight:800;flex-shrink:0}
-.dash-bad::before{content:'✗';color:#f87171}
-.dash-good::before{content:'✓';color:var(--blue-lt)}
+.dash-bad::before{content:'';color:#f87171}
+.dash-good::before{content:'';color:var(--blue-lt)}
 .dash-includes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px}
 .dash-inc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:20px;transition:background 0.2s,border-color 0.2s}
 .dash-inc:hover{background:rgba(255,255,255,0.08);border-color:rgba(26,127,173,0.4)}
@@ -139,7 +139,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,0.97
 .dash-price-type{font-size:15px;color:rgba(255,255,255,0.35);margin-top:4px;margin-bottom:20px}
 .dash-price-items{display:flex;flex-direction:column;gap:8px;max-width:360px;margin:0 auto 24px;text-align:left}
 .dash-price-item{font-size:13px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:10px}
-.dash-price-item::before{content:'✓';color:var(--amber);font-weight:800;flex-shrink:0}
+.dash-price-item::before{content:'';color:var(--amber);font-weight:800;flex-shrink:0}
 
 /* CTA */
 .cta-strip{background:var(--blue);padding:80px 40px;text-align:center}
@@ -166,328 +166,320 @@ footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:40px}
 
 <!-- NAV -->
 <nav>
-  <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:38px;width:auto;display:block"></a>
-  <div class="nav-links">
+ <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:38px;width:auto;display:block"></a>
+ <div class="nav-links">
     <a href="services.html">Services</a>
     <a href="sync360.html">Our Products</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="https://clientportal.summitsrcgroup.com/portal/dashboard" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap" target="_blank">🔐 Admin Portal</a>
-    <a href="https://workspace.summitsrcgroup.com" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap" target="_blank" rel="noopener noreferrer">▦ Summit Workspace Portal</a>
+    <a href="https://workspace.summitsrcgroup.com/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;white-space:nowrap">Launch Workspace</a>
     <a href="mailto:info@summitsrcgroup.com" class="nav-cta">Book a Consultation</a>
   </div>
 </nav>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="hero-grid"></div>
-  <div class="ph-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> › Services</div>
-    <div class="ph-tag">Consulting Services</div>
-    <h1 class="ph-h1">Turning compliance<br>into <em>performance.</em></h1>
-    <p class="ph-p">Practical, expert-led consulting across ISO management systems, auditing, risk management, and training — built for Caribbean organisations.</p>
-  </div>
+ <div class="hero-grid"></div>
+ <div class="ph-inner">
+ <div class="breadcrumb"><a href="index.html">Home</a> › Services</div>
+ <div class="ph-tag">Consulting Services</div>
+ <h1 class="ph-h1">Turning compliance<br>into <em>performance.</em></h1>
+ <p class="ph-p">Practical, expert-led consulting across ISO management systems, auditing, risk management, and training — built for Caribbean organisations.</p>
+ </div>
 </div>
 
 <!-- ANCHOR NAV -->
 <div class="anchor-nav">
-  <div class="anchor-nav-inner">
-    <a href="#iso" class="anav-link active">ISO Implementation</a>
-    <a href="#auditing" class="anav-link">Auditing &amp; Compliance</a>
-    <a href="#training" class="anav-link">Training &amp; Development</a>
-    <a href="#dashboards" class="anav-link">Dashboard &amp; Data Services</a>
-  </div>
+ <div class="anchor-nav-inner">
+ <a href="#iso" class="anav-link active">ISO Implementation</a>
+ <a href="#auditing" class="anav-link">Auditing &amp; Compliance</a>
+ <a href="#training" class="anav-link">Training &amp; Development</a>
+ <a href="#dashboards" class="anav-link">Dashboard &amp; Data Services</a>
+ </div>
 </div>
 
 <!-- ISO IMPLEMENTATION -->
 <section class="sec iso" id="iso">
-  <div class="sec-inner">
-    <div class="sec-ey">ISO Implementation &amp; Management</div>
-    <h2 class="sec-h2">Management systems that <em>actually work</em></h2>
-    <p class="sec-p">We design, implement, and maintain ISO management systems that go beyond certification — building real operational capability your team can sustain.</p>
+ <div class="sec-inner">
+ <div class="sec-ey">ISO Implementation &amp; Management</div>
+ <h2 class="sec-h2">Management systems that <em>actually work</em></h2>
+ <p class="sec-p">We design, implement, and maintain ISO management systems that go beyond certification — building real operational capability your team can sustain.</p>
 
-    <div class="iso-standards">
-      <div class="iso-card">
-        <div class="iso-std">ISO 9001</div>
-        <div class="iso-name">Quality Management Systems</div>
-        <div class="iso-body">Consistent quality, customer satisfaction, and continual improvement across your processes and services.</div>
-      </div>
-      <div class="iso-card">
-        <div class="iso-std">ISO 14001</div>
-        <div class="iso-name">Environmental Management Systems</div>
-        <div class="iso-body">Environmental compliance, impact reduction, and regulatory readiness for your operations.</div>
-      </div>
-      <div class="iso-card">
-        <div class="iso-std">ISO 45001</div>
-        <div class="iso-name">Occupational Health &amp; Safety</div>
-        <div class="iso-body">Workplace safety systems that protect people, reduce incidents, and demonstrate due diligence.</div>
-      </div>
-      <div class="iso-card">
-        <div class="iso-std">ISO 22301</div>
-        <div class="iso-name">Business Continuity Management</div>
-        <div class="iso-body">Resilience planning to keep your organisation operational when disruptions occur.</div>
-      </div>
-    </div>
+ <div class="iso-standards">
+ <div class="iso-card">
+ <div class="iso-std">ISO 9001</div>
+ <div class="iso-name">Quality Management Systems</div>
+ <div class="iso-body">Consistent quality, customer satisfaction, and continual improvement across your processes and services.</div>
+ </div>
+ <div class="iso-card">
+ <div class="iso-std">ISO 14001</div>
+ <div class="iso-name">Environmental Management Systems</div>
+ <div class="iso-body">Environmental compliance, impact reduction, and regulatory readiness for your operations.</div>
+ </div>
+ <div class="iso-card">
+ <div class="iso-std">ISO 45001</div>
+ <div class="iso-name">Occupational Health &amp; Safety</div>
+ <div class="iso-body">Workplace safety systems that protect people, reduce incidents, and demonstrate due diligence.</div>
+ </div>
+ <div class="iso-card">
+ <div class="iso-std">ISO 22301</div>
+ <div class="iso-name">Business Continuity Management</div>
+ <div class="iso-body">Resilience planning to keep your organisation operational when disruptions occur.</div>
+ </div>
+ </div>
 
-    <div class="iso-services-grid">
-      <div>
-        <div class="iso-services-title">Implementation Services</div>
-        <div class="iso-service-list">
-          <div class="iso-service-item">Gap assessments &amp; readiness reviews</div>
-          <div class="iso-service-item">Management system design</div>
-          <div class="iso-service-item">Policy &amp; procedure development</div>
-          <div class="iso-service-item">Risk assessments &amp; process mapping</div>
-          <div class="iso-service-item">KPI development &amp; monitoring</div>
-          <div class="iso-service-item">Internal audit programmes</div>
-          <div class="iso-service-item">Management reviews</div>
-          <div class="iso-service-item">Certification readiness support</div>
-          <div class="iso-service-item">Surveillance audit preparation</div>
-          <div class="iso-service-item">Continual improvement programmes</div>
-        </div>
-      </div>
-      <div>
-        <div class="iso-services-title">Our Implementation Process</div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
-            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Assess</div><div style="font-size:13px;color:var(--slate)">Gap assessment against the standard to establish your baseline and define the scope of work.</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
-            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Design</div><div style="font-size:13px;color:var(--slate)">System design tailored to your organisation — policies, procedures, and process documentation.</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
-            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Implement &amp; Train</div><div style="font-size:13px;color:var(--slate)">Roll out the system with your team, building internal competence at every level.</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div>
-            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Audit &amp; Certify</div><div style="font-size:13px;color:var(--slate)">Internal audit programme, management review, and certification body preparation.</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</div>
-            <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Improve</div><div style="font-size:13px;color:var(--slate)">Ongoing support to maintain certification and drive continual improvement across the system.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="iso-services-grid">
+ <div>
+ <div class="iso-services-title">Implementation Services</div>
+ <div class="iso-service-list">
+ <div class="iso-service-item">Gap assessments &amp; readiness reviews</div>
+ <div class="iso-service-item">Management system design</div>
+ <div class="iso-service-item">Policy &amp; procedure development</div>
+ <div class="iso-service-item">Risk assessments &amp; process mapping</div>
+ <div class="iso-service-item">KPI development &amp; monitoring</div>
+ <div class="iso-service-item">Internal audit programmes</div>
+ <div class="iso-service-item">Management reviews</div>
+ <div class="iso-service-item">Certification readiness support</div>
+ <div class="iso-service-item">Surveillance audit preparation</div>
+ <div class="iso-service-item">Continual improvement programmes</div>
+ </div>
+ </div>
+ <div>
+ <div class="iso-services-title">Our Implementation Process</div>
+ <div style="display:flex;flex-direction:column;gap:12px">
+ <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+ <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+ <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Assess</div><div style="font-size:13px;color:var(--slate)">Gap assessment against the standard to establish your baseline and define the scope of work.</div></div>
+ </div>
+ <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+ <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+ <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Design</div><div style="font-size:13px;color:var(--slate)">System design tailored to your organisation — policies, procedures, and process documentation.</div></div>
+ </div>
+ <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+ <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+ <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Implement &amp; Train</div><div style="font-size:13px;color:var(--slate)">Roll out the system with your team, building internal competence at every level.</div></div>
+ </div>
+ <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+ <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div>
+ <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Audit &amp; Certify</div><div style="font-size:13px;color:var(--slate)">Internal audit programme, management review, and certification body preparation.</div></div>
+ </div>
+ <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:10px;border:1.5px solid var(--line-lt)">
+ <div style="width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--fd);font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</div>
+ <div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Improve</div><div style="font-size:13px;color:var(--slate)">Ongoing support to maintain certification and drive continual improvement across the system.</div></div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- AUDITING -->
 <section class="sec auditing" id="auditing">
-  <div class="sec-inner">
-    <div class="sec-ey">Auditing &amp; Compliance</div>
-    <h2 class="sec-h2">Risk-based audits that <em>strengthen performance</em></h2>
-    <p class="sec-p">Our audits go beyond finding nonconformances — they identify opportunities to improve performance, reduce risk, and build confidence in your management systems.</p>
-    <div class="audit-grid">
-      <div class="audit-card">
-        <div class="audit-icon">🔍</div>
-        <div class="audit-title">Internal Audits</div>
-        <div class="audit-body">Structured internal audits conducted against ISO standards and your own documented requirements, with findings and improvement recommendations.</div>
-      </div>
-      <div class="audit-card">
-        <div class="audit-icon">🏭</div>
-        <div class="audit-title">Supplier Audits</div>
-        <div class="audit-body">Evaluate supplier compliance and performance against your quality, safety, and environmental requirements before and during engagement.</div>
-      </div>
-      <div class="audit-card">
-        <div class="audit-icon">📋</div>
-        <div class="audit-title">Compliance Audits</div>
-        <div class="audit-body">Systematic review of your operations against applicable legal, regulatory, and contractual compliance obligations.</div>
-      </div>
-      <div class="audit-card">
-        <div class="audit-icon">📊</div>
-        <div class="audit-title">Gap Assessments</div>
-        <div class="audit-body">Benchmark your current management system against ISO requirements to identify gaps and prioritise your improvement roadmap.</div>
-      </div>
-      <div class="audit-card">
-        <div class="audit-icon">🎯</div>
-        <div class="audit-title">Surveillance Audit Preparation</div>
-        <div class="audit-body">Pre-surveillance reviews to ensure your system is maintained and ready for certification body visits.</div>
-      </div>
-      <div class="audit-card">
-        <div class="audit-icon">📈</div>
-        <div class="audit-title">Audit Programme Development</div>
-        <div class="audit-body">Design and implement a risk-based internal audit programme your team can manage independently with confidence.</div>
-      </div>
-    </div>
-  </div>
+ <div class="sec-inner">
+ <div class="sec-ey">Auditing &amp; Compliance</div>
+ <h2 class="sec-h2">Risk-based audits that <em>strengthen performance</em></h2>
+ <p class="sec-p">Our audits go beyond finding nonconformances — they identify opportunities to improve performance, reduce risk, and build confidence in your management systems.</p>
+ <div class="audit-grid">
+ <div class="audit-card">
+ <div class="audit-icon"></div>
+ <div class="audit-title">Internal Audits</div>
+ <div class="audit-body">Structured internal audits conducted against ISO standards and your own documented requirements, with findings and improvement recommendations.</div>
+ </div>
+ <div class="audit-card">
+ <div class="audit-icon"></div>
+ <div class="audit-title">Supplier Audits</div>
+ <div class="audit-body">Evaluate supplier compliance and performance against your quality, safety, and environmental requirements before and during engagement.</div>
+ </div>
+ <div class="audit-card">
+ <div class="audit-icon"></div>
+ <div class="audit-title">Compliance Audits</div>
+ <div class="audit-body">Systematic review of your operations against applicable legal, regulatory, and contractual compliance obligations.</div>
+ </div>
+ <div class="audit-card">
+ <div class="audit-icon"></div>
+ <div class="audit-title">Gap Assessments</div>
+ <div class="audit-body">Benchmark your current management system against ISO requirements to identify gaps and prioritise your improvement roadmap.</div>
+ </div>
+ <div class="audit-card">
+ <div class="audit-icon"></div>
+ <div class="audit-title">Surveillance Audit Preparation</div>
+ <div class="audit-body">Pre-surveillance reviews to ensure your system is maintained and ready for certification body visits.</div>
+ </div>
+ <div class="audit-card">
+ <div class="audit-icon"></div>
+ <div class="audit-title">Audit Programme Development</div>
+ <div class="audit-body">Design and implement a risk-based internal audit programme your team can manage independently with confidence.</div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- TRAINING -->
 <section class="sec training" id="training">
-  <div class="sec-inner">
-    <div class="sec-ey">Training &amp; Competence Development</div>
-    <h2 class="sec-h2">Building capability <em>at every level</em></h2>
-    <p class="sec-p">Customised training programmes designed for your team, your industry, and your management system — from frontline workers to executive leadership.</p>
-    <div class="training-grid">
-      <div>
-        <div style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line-lt)">Who We Train</div>
-        <div class="training-programs">
-          <div class="tp-item">
-            <div class="tp-icon">👷</div>
-            <div><div class="tp-name">Frontline Personnel</div><div class="tp-sub">ISO awareness, safety procedures, emergency response</div></div>
-          </div>
-          <div class="tp-item">
-            <div class="tp-icon">👔</div>
-            <div><div class="tp-name">Supervisors &amp; Managers</div><div class="tp-sub">System ownership, audit readiness, KPI management</div></div>
-          </div>
-          <div class="tp-item">
-            <div class="tp-icon">🏢</div>
-            <div><div class="tp-name">Executive Leadership</div><div class="tp-sub">Management review, strategic risk, leadership obligations</div></div>
-          </div>
-          <div class="tp-item">
-            <div class="tp-icon">🔍</div>
-            <div><div class="tp-name">Internal Auditors</div><div class="tp-sub">Audit techniques, findings, reporting, CAPA</div></div>
-          </div>
-          <div class="tp-item">
-            <div class="tp-icon">🚨</div>
-            <div><div class="tp-name">Emergency Response Teams</div><div class="tp-sub">Drill facilitation, accountability, incident command</div></div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line-lt)">Training Programmes</div>
-        <div class="training-types">
-          <div class="tt-card">
-            <div class="tt-title">ISO Awareness Training</div>
-            <div class="tt-body">Foundation-level training on ISO standards, requirements, and what they mean for your team's day-to-day work.</div>
-          </div>
-          <div class="tt-card">
-            <div class="tt-title">Internal Auditor Training</div>
-            <div class="tt-body">Practical training to develop competent internal auditors who can plan, conduct, and report audits confidently.</div>
-          </div>
-          <div class="tt-card">
-            <div class="tt-title">Risk Assessment Workshops</div>
-            <div class="tt-body">Hands-on workshops to identify, evaluate, and treat risks across your operations using proven methodologies.</div>
-          </div>
-          <div class="tt-card">
-            <div class="tt-title">Emergency Response Training</div>
-            <div class="tt-body">Scenario-based training for emergency response teams covering accountability, mustering, and incident command.</div>
-          </div>
-          <div class="tt-card">
-            <div class="tt-title">Toolbox Talks</div>
-            <div class="tt-body">Short, focused safety briefings delivered on-site to keep your team informed, engaged, and compliant.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="sec-inner">
+ <div class="sec-ey">Training &amp; Competence Development</div>
+ <h2 class="sec-h2">Building capability <em>at every level</em></h2>
+ <p class="sec-p">Customised training programmes designed for your team, your industry, and your management system — from frontline workers to executive leadership.</p>
+ <div class="training-grid">
+ <div>
+ <div style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line-lt)">Who We Train</div>
+ <div class="training-programs">
+ <div class="tp-item">
+ <div class="tp-icon"></div>
+ <div><div class="tp-name">Frontline Personnel</div><div class="tp-sub">ISO awareness, safety procedures, emergency response</div></div>
+ </div>
+ <div class="tp-item">
+ <div class="tp-icon"></div>
+ <div><div class="tp-name">Supervisors &amp; Managers</div><div class="tp-sub">System ownership, audit readiness, KPI management</div></div>
+ </div>
+ <div class="tp-item">
+ <div class="tp-icon"></div>
+ <div><div class="tp-name">Executive Leadership</div><div class="tp-sub">Management review, strategic risk, leadership obligations</div></div>
+ </div>
+ <div class="tp-item">
+ <div class="tp-icon"></div>
+ <div><div class="tp-name">Internal Auditors</div><div class="tp-sub">Audit techniques, findings, reporting, CAPA</div></div>
+ </div>
+ <div class="tp-item">
+ <div class="tp-icon"></div>
+ <div><div class="tp-name">Emergency Response Teams</div><div class="tp-sub">Drill facilitation, accountability, incident command</div></div>
+ </div>
+ </div>
+ </div>
+ <div>
+ <div style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line-lt)">Training Programmes</div>
+ <div class="training-types">
+ <div class="tt-card">
+ <div class="tt-title">ISO Awareness Training</div>
+ <div class="tt-body">Foundation-level training on ISO standards, requirements, and what they mean for your team's day-to-day work.</div>
+ </div>
+ <div class="tt-card">
+ <div class="tt-title">Internal Auditor Training</div>
+ <div class="tt-body">Practical training to develop competent internal auditors who can plan, conduct, and report audits confidently.</div>
+ </div>
+ <div class="tt-card">
+ <div class="tt-title">Risk Assessment Workshops</div>
+ <div class="tt-body">Hands-on workshops to identify, evaluate, and treat risks across your operations using proven methodologies.</div>
+ </div>
+ <div class="tt-card">
+ <div class="tt-title">Emergency Response Training</div>
+ <div class="tt-body">Scenario-based training for emergency response teams covering accountability, mustering, and incident command.</div>
+ </div>
+ <div class="tt-card">
+ <div class="tt-title">Toolbox Talks</div>
+ <div class="tt-body">Short, focused safety briefings delivered on-site to keep your team informed, engaged, and compliant.</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- DASHBOARDS -->
 <section class="sec dashboards" id="dashboards">
-  <div class="sec-inner">
-    <div class="sec-ey">Dashboard &amp; Data Services</div>
-    <h2 class="sec-h2">You don't need expensive software.<br><em>You need better visibility.</em></h2>
-    <p class="sec-p">Most businesses already have valuable data in the tools they use every day. The challenge isn't the data — it's how it's organised and used. We turn your existing data into clear, actionable dashboards.</p>
+ <div class="sec-inner">
+ <div class="sec-ey">Dashboard &amp; Data Services</div>
+ <h2 class="sec-h2">You don't need expensive software.<br><em>You need better visibility.</em></h2>
+ <p class="sec-p">Most businesses already have valuable data in the tools they use every day. The challenge isn't the data — it's how it's organised and used. We turn your existing data into clear, actionable dashboards.</p>
 
-    <div class="dash-vs">
-      <div class="dash-box dash-box-bad">
-        <div class="dash-label dash-label-bad">✗ The problem</div>
-        <div class="dash-points">
-          <div class="dash-point dash-bad">Disorganised data across spreadsheets and reports</div>
-          <div class="dash-point dash-bad">Hours wasted on manual reporting every week</div>
-          <div class="dash-point dash-bad">No clear picture of what's working and what isn't</div>
-          <div class="dash-point dash-bad">Decisions made on gut feeling, not data</div>
-          <div class="dash-point dash-bad">Issues identified too late to act on</div>
-        </div>
-      </div>
-      <div class="dash-box dash-box-good">
-        <div class="dash-label dash-label-good">✓ What we deliver</div>
-        <div class="dash-points">
-          <div class="dash-point dash-good">One clear dashboard with all your key metrics</div>
-          <div class="dash-point dash-good">Automated reporting that saves hours every week</div>
-          <div class="dash-point dash-good">Real-time visibility into performance and trends</div>
-          <div class="dash-point dash-good">Data-driven decisions at every level of the business</div>
-          <div class="dash-point dash-good">Early warning signals before issues escalate</div>
-        </div>
-      </div>
-    </div>
+ <div class="dash-vs">
+ <div class="dash-box dash-box-bad">
+ <div class="dash-label dash-label-bad"> The problem</div>
+ <div class="dash-points">
+ <div class="dash-point dash-bad">Disorganised data across spreadsheets and reports</div>
+ <div class="dash-point dash-bad">Hours wasted on manual reporting every week</div>
+ <div class="dash-point dash-bad">No clear picture of what's working and what isn't</div>
+ <div class="dash-point dash-bad">Decisions made on gut feeling, not data</div>
+ <div class="dash-point dash-bad">Issues identified too late to act on</div>
+ </div>
+ </div>
+ <div class="dash-box dash-box-good">
+ <div class="dash-label dash-label-good"> What we deliver</div>
+ <div class="dash-points">
+ <div class="dash-point dash-good">One clear dashboard with all your key metrics</div>
+ <div class="dash-point dash-good">Automated reporting that saves hours every week</div>
+ <div class="dash-point dash-good">Real-time visibility into performance and trends</div>
+ <div class="dash-point dash-good">Data-driven decisions at every level of the business</div>
+ <div class="dash-point dash-good">Early warning signals before issues escalate</div>
+ </div>
+ </div>
+ </div>
 
-    <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;text-align:center">We work with tools you already have</div>
-    <div class="dash-tools">
-      <span class="dash-tool">📊 Excel Spreadsheets</span>
-      <span class="dash-tool">📗 Google Sheets</span>
-      <span class="dash-tool">📁 Existing Reports</span>
-      <span class="dash-tool">🗂 Operational Records</span>
-      <span class="dash-tool">📧 Email &amp; Feedback Logs</span>
-      <span class="dash-tool">👥 HR &amp; Training Records</span>
-      <span class="dash-tool">📅 Attendance Data</span>
-      <span class="dash-tool">💰 Sales &amp; Financial Data</span>
-    </div>
+ <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;text-align:center">We work with tools you already have</div>
+ <div class="dash-tools">
+ <span class="dash-tool"> Excel Spreadsheets</span>
+ <span class="dash-tool"> Google Sheets</span>
+ <span class="dash-tool"> Existing Reports</span>
+ <span class="dash-tool"> Operational Records</span>
+ <span class="dash-tool"> Email &amp; Feedback Logs</span>
+ <span class="dash-tool"> HR &amp; Training Records</span>
+ <span class="dash-tool"> Attendance Data</span>
+ <span class="dash-tool"> Sales &amp; Financial Data</span>
+ </div>
 
-    <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;text-align:center">What's included in every dashboard</div>
-    <div class="dash-includes">
-      <div class="dash-inc">
-        <div class="dash-inc-icon">📊</div>
-        <div class="dash-inc-title">Interactive Dashboard</div>
-        <div class="dash-inc-body">Easy-to-use, interactive dashboards tailored to your business and the decisions you need to make.</div>
-      </div>
-      <div class="dash-inc">
-        <div class="dash-inc-icon">🎯</div>
-        <div class="dash-inc-title">5 Key Performance Indicators</div>
-        <div class="dash-inc-body">We identify and track the KPIs that matter most to your operation and strategic goals.</div>
-      </div>
-      <div class="dash-inc">
-        <div class="dash-inc-icon">📋</div>
-        <div class="dash-inc-title">Executive Summary View</div>
-        <div class="dash-inc-body">A snapshot of your business performance at a glance — built for leadership decision-making.</div>
-      </div>
-      <div class="dash-inc">
-        <div class="dash-inc-icon">📈</div>
-        <div class="dash-inc-title">Data Visualisation Suite</div>
-        <div class="dash-inc-body">Professional charts and visualisations that turn raw data into insights you can act on immediately.</div>
-      </div>
-      <div class="dash-inc">
-        <div class="dash-inc-icon">🎓</div>
-        <div class="dash-inc-title">User Training Session</div>
-        <div class="dash-inc-body">We walk you through your dashboard so you and your team can use it with confidence from day one.</div>
-      </div>
-      <div class="dash-inc">
-        <div class="dash-inc-icon">🛟</div>
-        <div class="dash-inc-title">30 Days Support</div>
-        <div class="dash-inc-body">30 days of post-delivery support to ensure you get maximum value from your new dashboard.</div>
-      </div>
-    </div>
+ <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;text-align:center">What's included in every dashboard</div>
+ <div class="dash-includes">
+ <div class="dash-inc">
+ <div class="dash-inc-icon"></div>
+ <div class="dash-inc-title">Interactive Dashboard</div>
+ <div class="dash-inc-body">Easy-to-use, interactive dashboards tailored to your business and the decisions you need to make.</div>
+ </div>
+ <div class="dash-inc">
+ <div class="dash-inc-icon"></div>
+ <div class="dash-inc-title">5 Key Performance Indicators</div>
+ <div class="dash-inc-body">We identify and track the KPIs that matter most to your operation and strategic goals.</div>
+ </div>
+ <div class="dash-inc">
+ <div class="dash-inc-icon"></div>
+ <div class="dash-inc-title">Executive Summary View</div>
+ <div class="dash-inc-body">A snapshot of your business performance at a glance — built for leadership decision-making.</div>
+ </div>
+ <div class="dash-inc">
+ <div class="dash-inc-icon"></div>
+ <div class="dash-inc-title">Data Visualisation Suite</div>
+ <div class="dash-inc-body">Professional charts and visualisations that turn raw data into insights you can act on immediately.</div>
+ </div>
+ <div class="dash-inc">
+ <div class="dash-inc-icon"></div>
+ <div class="dash-inc-title">User Training Session</div>
+ <div class="dash-inc-body">We walk you through your dashboard so you and your team can use it with confidence from day one.</div>
+ </div>
+ <div class="dash-inc">
+ <div class="dash-inc-icon"></div>
+ <div class="dash-inc-title">30 Days Support</div>
+ <div class="dash-inc-body">30 days of post-delivery support to ensure you get maximum value from your new dashboard.</div>
+ </div>
+ </div>
 
-    <div class="dash-price">
-      <div class="dash-price-tag">⭐ Introductory Offer</div>
-      <div class="dash-price-label">One-time package price</div>
-      <div class="dash-price-amount"><sup>$</sup>995</div>
-      <div class="dash-price-type">One-time · No ongoing fees</div>
-      <div class="dash-price-items">
-        <div class="dash-price-item">Interactive dashboard built to your business</div>
-        <div class="dash-price-item">5 KPIs tracked and visualised</div>
-        <div class="dash-price-item">Executive summary view</div>
-        <div class="dash-price-item">Data visualisation suite</div>
-        <div class="dash-price-item">User training session included</div>
-        <div class="dash-price-item">30 days of post-delivery support</div>
-      </div>
-      <a href="mailto:info@summitsrcgroup.com" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--amber);color:var(--navy-dk);font-size:15px;font-weight:700;border-radius:8px;transition:background 0.2s">Let's build your dashboard →</a>
-    </div>
-  </div>
+ <div class="dash-price">
+ <div class="dash-price-tag"> Introductory Offer</div>
+ <div class="dash-price-label">One-time package price</div>
+ <div class="dash-price-amount"><sup>$</sup>995</div>
+ <div class="dash-price-type">One-time · No ongoing fees</div>
+ <div class="dash-price-items">
+ <div class="dash-price-item">Interactive dashboard built to your business</div>
+ <div class="dash-price-item">5 KPIs tracked and visualised</div>
+ <div class="dash-price-item">Executive summary view</div>
+ <div class="dash-price-item">Data visualisation suite</div>
+ <div class="dash-price-item">User training session included</div>
+ <div class="dash-price-item">30 days of post-delivery support</div>
+ </div>
+ <a href="mailto:info@summitsrcgroup.com" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--amber);color:var(--navy-dk);font-size:15px;font-weight:700;border-radius:8px;transition:background 0.2s">Let's build your dashboard →</a>
+ </div>
+ </div>
 </section>
 
 <!-- CTA -->
 <div class="cta-strip">
-  <h2>Ready to strengthen your management systems?</h2>
-  <p>Book a free consultation to discuss how Summit can support your organisation.</p>
-  <a href="mailto:info@summitsrcgroup.com" class="btn-a">Schedule a consultation →</a>
+ <h2>Ready to strengthen your management systems?</h2>
+ <p>Book a free consultation to discuss how Summit can support your organisation.</p>
+ <a href="mailto:info@summitsrcgroup.com" class="btn-a">Schedule a consultation →</a>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="safetrack.html">SafeTrack™</a>
-      <a href="index.html#team">About</a>
-      <a href="mailto:info@summitsrcgroup.com">Contact</a>
-    </div>
+    <a href="index.html"><img src="logo.png" alt="Summit Safety Risk and Compliance Authority" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
     <div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority.</div>
   </div>
 </footer>
@@ -497,12 +489,12 @@ footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:40px}
 const sections = document.querySelectorAll('#iso, #auditing, #training, #dashboards');
 const navLinks = document.querySelectorAll('.anav-link');
 window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
-  navLinks.forEach(l => {
-    l.classList.remove('active');
-    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
-  });
+ let current = '';
+ sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+ navLinks.forEach(l => {
+ l.classList.remove('active');
+ if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+ });
 });
 </script>
 </body>

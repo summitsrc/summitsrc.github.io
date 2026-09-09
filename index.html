@@ -7,510 +7,199 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-:root {
- --navy: #0D2B55;
- --navy-dk: #081D3A;
- --navy-md: #1A4A7A;
- --blue: #1A7FAD;
- --blue-lt: #2EA8D8;
- --amber: #F5A623;
- --amber-dk:#D4880A;
- --slate: #64748B;
- --off: #F0F7FB;
- --line: rgba(255,255,255,0.08);
- --line-lt: #E2E8F0;
- --fd: 'Barlow Condensed', sans-serif;
- --fb: 'Inter', sans-serif;
+:root{
+ --navy:#0D2B55; --navy-dk:#081D3A; --navy-md:#1A4A7A;
+ --blue:#1A7FAD; --blue-lt:#2EA8D8; --amber:#F5A623; --amber-dk:#D4880A;
+ --slate:#64748B; --off:#F0F7FB; --line:rgba(255,255,255,.08); --line-lt:#E2E8F0;
+ --fd:'Barlow Condensed',sans-serif; --fb:'Inter',sans-serif;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--fb); color: var(--navy); background: #fff; overflow-x: hidden; }
-a { text-decoration: none; color: inherit; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--navy);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 
-/* NAV */
-nav {
- position: fixed; top: 0; left: 0; right: 0; z-index: 100;
- background: rgba(8,29,58,0.97); backdrop-filter: blur(12px);
- border-bottom: 1px solid var(--line);
- padding: 0 40px; height: 66px;
- display: flex; align-items: center; gap: 40px;
-}
-.nav-brand { display: flex; flex-direction: column; line-height: 1.1; flex-shrink: 0; }
-.nb1 { font-family: var(--fd); font-size: 17px; font-weight: 900; color: #fff; letter-spacing: 1.5px; text-transform: uppercase; }
-.nb2 { font-size: 9px; font-weight: 600; color: var(--blue); letter-spacing: 2px; text-transform: uppercase; margin-top: 1px; }
-.nav-links { display: flex; gap: 24px; margin-left: auto; align-items: center; }
-.nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); transition: color 0.2s; white-space: nowrap; }
-.nav-links a:hover { color: #fff; }
-.nav-links .has-drop { position: relative; }
-.nav-links .has-drop > a::after { content: ' '; font-size: 9px; opacity: 0.5; }
-.nav-cta {
- padding: 8px 18px; background: var(--amber); color: var(--navy-dk) !important;
- font-weight: 700 !important; border-radius: 6px; transition: background 0.2s !important;
-}
-.nav-cta:hover { background: var(--amber-dk) !important; }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,29,58,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 40px;height:66px;display:flex;align-items:center;gap:40px}
+nav>a img{height:40px!important;filter:brightness(0) invert(1)}
+.nav-links{display:flex;gap:24px;margin-left:auto;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.68);transition:.2s;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:8px 18px;background:var(--amber);color:var(--navy-dk)!important;font-weight:700!important;border-radius:6px}
 
-/* HERO */
-.hero {
- min-height: 100vh;
- background: var(--navy-dk);
- display: grid; grid-template-columns: 1fr 1fr;
- align-items: center;
- padding: 120px 40px 80px;
- gap: 60px;
- position: relative; overflow: hidden;
-}
-.hero-grid {
- position: absolute; inset: 0; pointer-events: none;
- background-image:
- linear-gradient(rgba(26,127,173,0.06) 1px, transparent 1px),
- linear-gradient(90deg, rgba(26,127,173,0.06) 1px, transparent 1px);
- background-size: 56px 56px;
- mask-image: linear-gradient(135deg, transparent 0%, black 40%, black 70%, transparent 100%);
-}
-.hero-left { position: relative; max-width: 580px; }
-.hero-tag {
- display: inline-flex; align-items: center; gap: 8px;
- background: rgba(26,127,173,0.15); border: 1px solid rgba(26,127,173,0.3);
- color: var(--blue-lt); font-size: 11px; font-weight: 700;
- letter-spacing: 1.5px; text-transform: uppercase;
- padding: 5px 14px; border-radius: 4px; margin-bottom: 28px;
-}
-.hero-h1 {
- font-family: var(--fd);
- font-size: clamp(42px, 5.5vw, 72px);
- font-weight: 900; color: #fff;
- line-height: 0.94; letter-spacing: -0.5px;
- text-transform: uppercase; margin-bottom: 24px;
-}
-.hero-h1 em { font-style: normal; color: var(--amber); display: block; }
-.hero-p {
- font-size: 16px; color: rgba(255,255,255,0.55);
- line-height: 1.7; margin-bottom: 40px; max-width: 460px;
-}
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn-a {
- display: inline-flex; align-items: center; gap: 8px;
- padding: 13px 26px; background: var(--amber); color: var(--navy-dk);
- font-size: 14px; font-weight: 700; border-radius: 7px;
- transition: background 0.2s, transform 0.15s;
-}
-.btn-a:hover { background: var(--amber-dk); transform: translateY(-1px); }
-.btn-b {
- display: inline-flex; align-items: center; gap: 8px;
- padding: 13px 26px; background: transparent;
- border: 1.5px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.75);
- font-size: 14px; font-weight: 600; border-radius: 7px;
- transition: border-color 0.2s, color 0.2s;
-}
-.btn-b:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.hero{min-height:100vh;background:var(--navy-dk);display:grid;grid-template-columns:1.02fr .98fr;align-items:center;padding:110px 40px 72px;gap:56px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(26,127,173,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(26,127,173,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(135deg,transparent 0%,#000 35%,#000 75%,transparent 100%)}
+.hero-left,.hero-media{position:relative;z-index:1}
+.hero-left{max-width:600px;justify-self:end;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(26,127,173,.15);border:1px solid rgba(26,127,173,.3);color:var(--blue-lt);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:28px}
+.hero-h1{font-family:var(--fd);font-size:clamp(44px,5.4vw,74px);font-weight:900;color:#fff;line-height:.94;letter-spacing:-.5px;text-transform:uppercase;margin-bottom:24px}
+.hero-h1 em{font-style:normal;color:var(--amber);display:block}
+.hero-p{font-size:16px;color:rgba(255,255,255,.62);line-height:1.75;margin-bottom:38px;max-width:530px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-a,.btn-b{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;font-size:14px;border-radius:7px;transition:.2s}
+.btn-a{background:var(--amber);color:var(--navy-dk);font-weight:700}.btn-a:hover{background:var(--amber-dk);transform:translateY(-1px)}
+.btn-b{border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.82);font-weight:600}.btn-b:hover{border-color:rgba(255,255,255,.5);color:#fff}
 
-/* Hero right — product cards */
-.hero-right { position: relative; display: flex; flex-direction: column; gap: 14px; }
-.hero-card {
- background: rgba(255,255,255,0.04);
- border: 1px solid rgba(255,255,255,0.09);
- border-radius: 12px; padding: 22px 24px;
- display: flex; align-items: flex-start; gap: 16px;
- transition: background 0.2s, border-color 0.2s, transform 0.2s;
- cursor: default;
-}
-.hero-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(26,127,173,0.4); transform: translateX(4px); }
-.hero-card-icon {
- width: 42px; height: 42px; border-radius: 9px; flex-shrink: 0;
- display: flex; align-items: center; justify-content: center; font-size: 18px;
-}
-.ic-blue { background: rgba(26,127,173,0.2); }
-.ic-amber { background: rgba(245,166,35,0.15); }
-.ic-navy { background: rgba(255,255,255,0.08); }
-.hero-card-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.hero-card-body { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
-.hero-card-link { font-size: 11px; color: var(--blue-lt); font-weight: 600; margin-top: 6px; display: inline-block; }
-.hero-card-link:hover { color: var(--amber); }
+.hero-media{max-width:630px;justify-self:start;width:100%}
+.hero-photo-wrap{position:relative;border-radius:22px;overflow:hidden;min-height:610px;box-shadow:0 30px 70px rgba(0,0,0,.36);border:1px solid rgba(255,255,255,.1)}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-photo-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,29,58,.06) 15%,rgba(8,29,58,.25) 58%,rgba(8,29,58,.85) 100%)}
+.hero-photo-badge{position:absolute;z-index:2;left:22px;right:22px;bottom:22px;background:rgba(8,29,58,.82);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hero-stat strong{display:block;font-family:var(--fd);font-size:19px;color:#fff;text-transform:uppercase}.hero-stat span{display:block;margin-top:3px;font-size:11px;line-height:1.4;color:rgba(255,255,255,.55)}
+.hero-mini{position:absolute;z-index:3;top:26px;left:-34px;background:#fff;border-radius:12px;padding:15px 17px;width:210px;box-shadow:0 14px 34px rgba(0,0,0,.2);border-top:3px solid var(--amber)}
+.hero-mini b{display:block;font-size:13px;margin-bottom:4px}.hero-mini span{font-size:11px;color:var(--slate);line-height:1.45}
 
-/* SECTION BASE */
-.sec { padding: 88px 40px; }
-.sec-inner { max-width: 1100px; margin: 0 auto; }
-.sec-ey { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
-.sec-h2 {
- font-family: var(--fd); font-size: clamp(30px, 4vw, 48px);
- font-weight: 900; text-transform: uppercase; line-height: 1;
- color: var(--navy); letter-spacing: -0.5px; margin-bottom: 16px;
-}
-.sec-h2 em { font-style: normal; color: var(--blue); }
-.sec-p { font-size: 16px; color: var(--slate); line-height: 1.7; max-width: 540px; }
+.sec{padding:88px 40px}.sec-inner{max-width:1100px;margin:0 auto}.sec-ey{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}.sec-h2{font-family:var(--fd);font-size:clamp(31px,4vw,48px);font-weight:900;text-transform:uppercase;line-height:1;color:var(--navy);letter-spacing:-.5px;margin-bottom:16px}.sec-h2 em{font-style:normal;color:var(--blue)}.sec-p{font-size:16px;color:var(--slate);line-height:1.7;max-width:620px}
 
-/* WHY SUMMIT (3 columns) */
-.why { background: var(--off); }
-.why-cols { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; margin-top: 52px; }
-.why-list { display: flex; flex-direction: column; gap: 10px; }
-.why-item {
- display: flex; align-items: center; gap: 12px;
- font-size: 14px; font-weight: 600; color: var(--navy);
- background: #fff; border: 1.5px solid var(--line-lt);
- border-radius: 8px; padding: 12px 16px;
-}
-.why-item::before { content: ''; color: var(--blue); font-weight: 800; flex-shrink: 0; }
-.why-expertise {
- display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-}
-.exp-card {
- background: #fff; border-radius: 10px; padding: 20px;
- border: 1.5px solid var(--line-lt);
- border-top: 3px solid var(--blue);
- transition: box-shadow 0.2s, transform 0.2s;
-}
-.exp-card:hover { box-shadow: 0 6px 24px rgba(13,43,85,0.08); transform: translateY(-2px); }
-.exp-std { font-size: 13px; font-weight: 800; color: var(--blue); margin-bottom: 4px; letter-spacing: 0.5px; }
-.exp-name { font-size: 13px; color: var(--navy); font-weight: 600; margin-bottom: 6px; }
-.exp-body { font-size: 12px; color: var(--slate); line-height: 1.5; }
+.why{background:var(--off)}
+.why-feature{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:stretch;margin-top:48px}
+.why-photo{position:relative;min-height:390px;border-radius:16px;overflow:hidden;box-shadow:0 12px 34px rgba(13,43,85,.12)}
+.why-photo img{width:100%;height:100%;object-fit:cover}.why-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(8,29,58,.86) 100%)}
+.why-photo-copy{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;color:#fff}.why-photo-copy strong{display:block;font-family:var(--fd);font-size:28px;text-transform:uppercase}.why-photo-copy span{display:block;color:rgba(255,255,255,.7);font-size:13px;line-height:1.5;margin-top:6px}
+.why-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.why-item{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--navy);background:#fff;border:1.5px solid var(--line-lt);border-radius:9px;padding:14px 15px}.why-item::before{content:'✓';color:var(--blue);font-weight:900}
+.why-expertise{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.exp-card{background:#fff;border-radius:10px;padding:18px;border:1.5px solid var(--line-lt);border-top:3px solid var(--blue)}.exp-std{font-size:13px;font-weight:800;color:var(--blue);margin-bottom:4px}.exp-name{font-size:13px;color:var(--navy);font-weight:700;margin-bottom:6px}.exp-body{font-size:11.5px;color:var(--slate);line-height:1.5}
 
-/* SOLUTIONS */
-.solutions { background: #fff; }
-.sol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
-.sol-card {
- border: 1.5px solid var(--line-lt); border-radius: 12px;
- padding: 32px 28px; position: relative; overflow: hidden;
- transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
- display: flex; flex-direction: column;
-}
-.sol-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 10px 36px rgba(26,127,173,0.1); }
-.sol-accent {
- position: absolute; top: 0; left: 0; right: 0; height: 3px;
-}
-.acc-blue { background: var(--blue); }
-.acc-amber { background: var(--amber); }
-.acc-navy { background: var(--navy); }
-.sol-icon { font-size: 28px; margin-bottom: 18px; }
-.sol-title { font-family: var(--fd); font-size: 22px; font-weight: 800; color: var(--navy); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.3px; }
-.sol-body { font-size: 14px; color: var(--slate); line-height: 1.65; flex: 1; margin-bottom: 24px; }
-.sol-link {
- display: inline-flex; align-items: center; gap: 6px;
- font-size: 13px; font-weight: 700; color: var(--blue);
- transition: gap 0.2s, color 0.2s;
-}
-.sol-link:hover { gap: 10px; color: var(--navy); }
+.solutions{background:#fff}.sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin:48px auto 0;max-width:920px}.sol-card{border:1.5px solid var(--line-lt);border-radius:14px;overflow:hidden;transition:.2s;background:#fff;display:flex;flex-direction:column}.sol-card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:0 12px 38px rgba(26,127,173,.12)}.sol-media{height:220px;position:relative;overflow:hidden}.sol-media img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.sol-card:hover .sol-media img{transform:scale(1.035)}.sol-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(8,29,58,.6) 100%)}.sol-content{padding:26px 28px 30px;display:flex;flex-direction:column;flex:1}.sol-title{font-family:var(--fd);font-size:24px;font-weight:800;color:var(--navy);text-transform:uppercase;margin-bottom:8px}.sol-body{font-size:14px;color:var(--slate);line-height:1.65;flex:1;margin-bottom:22px}.sol-link{font-size:13px;font-weight:700;color:var(--blue)}
 
-/* INDUSTRIES */
-.industries { background: var(--navy-dk); }
-.industries .sec-h2 { color: #fff; }
-.industries .sec-p { color: rgba(255,255,255,0.45); }
-.industries .sec-ey { color: var(--amber); }
-.ind-grid {
- display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px;
- background: rgba(255,255,255,0.07); border-radius: 10px;
- overflow: hidden; margin-top: 52px;
-}
-.ind-item {
- background: var(--navy-dk); padding: 28px 20px;
- text-align: center;
- transition: background 0.2s;
-}
-.ind-item:hover { background: rgba(26,127,173,0.12); }
-.ind-icon { font-size: 28px; margin-bottom: 10px; }
-.ind-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 0.3px; line-height: 1.4; }
+.industries{position:relative;background:var(--navy-dk);overflow:hidden}.industries::before{content:'';position:absolute;inset:0;background:url('images/industries-port.jpg') center/cover no-repeat;opacity:.2}.industries::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,29,58,.98),rgba(8,29,58,.82))}.industries .sec-inner{position:relative;z-index:2}.industries .sec-h2{color:#fff}.industries .sec-p{color:rgba(255,255,255,.58)}.industries .sec-ey{color:var(--amber)}
+.ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:46px}.ind-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:24px 14px;text-align:center;border-radius:10px;backdrop-filter:blur(5px);transition:.2s}.ind-item:hover{background:rgba(26,127,173,.22);transform:translateY(-2px)}.ind-name{font-size:12px;font-weight:700;color:rgba(255,255,255,.82);line-height:1.4}
 
-/* TEAM */
-.team { background: var(--off); }
-.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 52px; max-width: 760px; }
-.team-card {
- background: #fff; border-radius: 12px;
- border: 1.5px solid var(--line-lt); padding: 32px 28px;
- text-align: center;
- transition: box-shadow 0.2s, transform 0.2s;
-}
-.team-card:hover { box-shadow: 0 8px 32px rgba(13,43,85,0.1); transform: translateY(-2px); }
-.team-av {
- width: 72px; height: 72px; border-radius: 50%;
- background: var(--navy); color: #fff;
- font-family: var(--fd); font-size: 26px; font-weight: 900;
- display: flex; align-items: center; justify-content: center;
- margin: 0 auto 16px; border: 3px solid var(--off);
-}
-.team-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-.team-role { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 10px; letter-spacing: 0.3px; }
-.team-body { font-size: 13px; color: var(--slate); line-height: 1.55; }
+.team{background:var(--off)}.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;max-width:780px}.team-card{background:#fff;border-radius:12px;border:1.5px solid var(--line-lt);padding:32px 28px;text-align:center}.team-av{width:74px;height:74px;border-radius:50%;background:linear-gradient(145deg,var(--navy),var(--blue));color:#fff;font-family:var(--fd);font-size:26px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;border:4px solid var(--off)}.team-name{font-size:16px;font-weight:700;margin-bottom:4px}.team-role{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:10px}.team-body{font-size:13px;color:var(--slate);line-height:1.55}
 
-/* CTA STRIP */
-.cta-strip {
- background: var(--blue); padding: 80px 40px; text-align: center;
-}
-.cta-strip h2 {
- font-family: var(--fd); font-size: clamp(30px, 4vw, 52px);
- font-weight: 900; text-transform: uppercase; color: #fff;
- letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1;
-}
-.cta-strip p { font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 36px; }
-.cta-strip .btn-a { font-size: 15px; padding: 14px 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+.field-strip{background:#fff;padding:0 40px 88px}.field-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;border-radius:18px;overflow:hidden;background:var(--navy);box-shadow:0 18px 44px rgba(13,43,85,.16)}.field-img{min-height:330px}.field-img img{width:100%;height:100%;object-fit:cover}.field-copy{padding:42px;color:#fff;display:flex;flex-direction:column;justify-content:center}.field-copy .sec-ey{color:var(--amber)}.field-copy h3{font-family:var(--fd);font-size:36px;line-height:1;text-transform:uppercase;margin-bottom:14px}.field-copy p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.66);margin-bottom:24px}
 
-/* FOOTER */
-footer {
- background: var(--navy-dk); border-top: 1px solid var(--line);
- padding: 52px 40px 32px;
-}
-.footer-top {
- max-width: 1100px; margin: 0 auto;
- display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
- padding-bottom: 40px; border-bottom: 1px solid var(--line);
- margin-bottom: 28px;
-}
-.footer-brand-col .nb1 { font-size: 18px; margin-bottom: 2px; }
-.footer-brand-col .nb2 { font-size: 10px; }
-.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 12px; line-height: 1.6; max-width: 240px; }
-.footer-contact { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; }
-.footer-contact a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
-.footer-contact a:hover { color: rgba(255,255,255,0.8); }
-.footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
-.footer-col-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-col-links a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
-.footer-col-links a:hover { color: #fff; }
-.footer-bot {
- max-width: 1100px; margin: 0 auto;
- display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-}
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
-.footer-reg { font-size: 12px; color: rgba(255,255,255,0.15); font-style: italic; }
+.cta-strip{background:var(--blue);padding:78px 40px;text-align:center}.cta-strip h2{font-family:var(--fd);font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-.5px;margin-bottom:14px;line-height:1}.cta-strip p{font-size:16px;color:rgba(255,255,255,.68);margin-bottom:34px}.cta-strip .btn-a{font-size:15px;padding:14px 32px;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:38px 40px}.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-inner img{height:40px;filter:brightness(0) invert(1)}.footer-copy{font-size:12px;color:rgba(255,255,255,.25)}
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
- .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 100px; }
- .hero-right { display: none; }
- .why-cols { grid-template-columns: 1fr; }
- .sol-grid { grid-template-columns: 1fr 1fr; }
- .ind-grid { grid-template-columns: repeat(3,1fr); }
- .footer-top { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 768px) {
- nav { padding: 0 20px; }
- .nav-links { display: none; }
- .hero { padding: 100px 20px 60px; }
- .sec { padding: 64px 20px; }
- .sol-grid { grid-template-columns: 1fr; }
- .team-grid { grid-template-columns: 1fr; }
- .ind-grid { grid-template-columns: repeat(2,1fr); }
- .why-expertise { grid-template-columns: 1fr; }
- .footer-top { grid-template-columns: 1fr; gap: 28px; }
- .cta-strip { padding: 60px 20px; }
-}
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+@media(max-width:1024px){.hero{grid-template-columns:1fr;padding-top:98px}.hero-left,.hero-media{justify-self:center;max-width:760px}.hero-photo-wrap{min-height:520px}.hero-mini{left:20px}.why-feature{grid-template-columns:1fr}.why-expertise{grid-template-columns:1fr 1fr}.ind-grid{grid-template-columns:repeat(3,1fr)}.field-inner{grid-template-columns:1fr}.field-img{min-height:280px}}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.hero{padding:100px 20px 58px;gap:34px}.hero-h1{font-size:48px}.hero-photo-wrap{min-height:470px;border-radius:16px}.hero-mini{display:none}.hero-photo-badge{grid-template-columns:1fr;padding:15px}.hero-stat span{display:none}.sec{padding:64px 20px}.why-list{grid-template-columns:1fr}.why-expertise{grid-template-columns:1fr}.sol-grid{grid-template-columns:1fr}.ind-grid{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:1fr}.field-strip{padding:0 20px 64px}.field-copy{padding:30px}.cta-strip{padding:58px 20px}.footer-inner{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
- <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority" style="height:38px;width:auto;display:block"></a>
- <div class="nav-links">
+  <a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority"></a>
+  <div class="nav-links">
     <a href="services.html">Services</a>
     <a href="sync360.html">Our Products</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="https://workspace.summitsrcgroup.com/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px;white-space:nowrap">Launch Workspace</a>
+    <a href="https://workspace.summitsrcgroup.com/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,180,216,.15);border:1.5px solid rgba(0,180,216,.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px">Launch Workspace</a>
     <a href="mailto:info@summitsrcgroup.com" class="nav-cta">Book a Consultation</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
- <div class="hero-grid"></div>
-
- <div class="hero-left">
- <div class="hero-tag">Caribbean Safety &amp; Compliance Consultancy</div>
- <h1 class="hero-h1">
- Stronger safety.<br>
- Smarter compliance.<br>
- <em>Built for the Caribbean.</em>
- </h1>
- <p class="hero-p">
- From ISO implementation and independent auditing to emergency preparedness and digital compliance platforms — Summit helps organisations strengthen performance, achieve certification, and build resilient operations.
- </p>
- <div class="hero-actions">
- <a href="#contact" class="btn-a">Book a free consultation</a>
- <a href="#solutions" class="btn-b">Explore our solutions</a>
- </div>
- </div>
-
- <div class="hero-right">
- <div class="hero-card">
- <div class="hero-card-icon ic-blue"></div>
- <div>
- <div class="hero-card-title">Consulting Services</div>
- <div class="hero-card-body">ISO implementation, auditing, risk assessments, training, and continual improvement across all major management systems.</div>
- <a href="services.html" class="hero-card-link">View services →</a>
- </div>
- </div>
- <div class="hero-card">
- <div class="hero-card-icon ic-navy"></div>
- <div>
- <div class="hero-card-title">Summit Workspace</div>
- <div class="hero-card-body">Eight purpose-built compliance and safety applications — document control, CAPA, audits, asset management, and more — in one secure portal.</div>
- <a href="sync360.html" class="hero-card-link">Explore the app suite →</a>
- </div>
- </div>
- </div>
+  <div class="hero-left">
+    <div class="hero-tag">Caribbean Safety &amp; Compliance Consultancy</div>
+    <h1 class="hero-h1">Stronger safety.<br>Smarter compliance.<br><em>Built for the Caribbean.</em></h1>
+    <p class="hero-p">From ISO implementation and independent auditing to emergency preparedness and digital compliance platforms — Summit helps organisations strengthen performance, achieve certification and build resilient operations.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-a">Book a free consultation</a>
+      <a href="#solutions" class="btn-b">Explore our solutions</a>
+    </div>
+  </div>
+  <div class="hero-media">
+    <div class="hero-mini"><b>Consultancy + Digital Solutions</b><span>Practical expertise in the field, supported by tools that improve visibility and accountability.</span></div>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="images/hero-field.jpg" alt="Safety and compliance professional working at a Caribbean port">
+      <div class="hero-photo-badge">
+        <div class="hero-stat"><strong>Protect People</strong><span>Safer workplaces and stronger emergency readiness.</span></div>
+        <div class="hero-stat"><strong>Manage Risk</strong><span>Identify, assess and control operational risks.</span></div>
+        <div class="hero-stat"><strong>Improve</strong><span>Use evidence, data and systems to improve continuously.</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- WHY SUMMIT -->
 <section class="sec why" id="why">
- <div class="sec-inner">
- <div class="sec-ey">Why Summit</div>
- <h2 class="sec-h2">Your partner in safety, risk &amp; <em>continuous improvement</em></h2>
- <p class="sec-p">A Bahamian-owned consultancy combining deep ISO expertise with practical, technology-enabled solutions built for the Caribbean context.</p>
- <div class="why-cols">
- <div class="why-list">
- <div class="why-item">Bahamian expertise</div>
- <div class="why-item">ISO certified professionals</div>
- <div class="why-item">NEBOSH certified</div>
- <div class="why-item">Lean Six Sigma expertise</div>
- <div class="why-item">40+ years combined experience</div>
- <div class="why-item">Technology-enabled solutions</div>
- <div class="why-item">Multi-industry experience</div>
- <div class="why-item">Ongoing support</div>
- </div>
- <div class="why-expertise">
- <div class="exp-card">
- <div class="exp-std">ISO 9001</div>
- <div class="exp-name">Quality Management</div>
- <div class="exp-body">Design, implementation, and continual improvement of quality management systems.</div>
- </div>
- <div class="exp-card">
- <div class="exp-std">ISO 14001</div>
- <div class="exp-name">Environmental Management</div>
- <div class="exp-body">Environmental compliance, impact reduction, and regulatory readiness.</div>
- </div>
- <div class="exp-card">
- <div class="exp-std">ISO 45001</div>
- <div class="exp-name">Occupational Health &amp; Safety</div>
- <div class="exp-body">Workplace safety systems that protect people and reduce operational risk.</div>
- </div>
- <div class="exp-card">
- <div class="exp-std">ISO 22301</div>
- <div class="exp-name">Business Continuity</div>
- <div class="exp-body">Resilience planning to keep your organisation operational when it matters most.</div>
- </div>
- </div>
- </div>
- </div>
+  <div class="sec-inner">
+    <div class="sec-ey">Why Summit</div>
+    <h2 class="sec-h2">Your partner in safety, risk &amp; <em>continuous improvement</em></h2>
+    <p class="sec-p">A Bahamian-owned consultancy combining deep ISO expertise with practical, technology-enabled solutions built for the Caribbean context.</p>
+    <div class="why-feature">
+      <div class="why-photo">
+        <img src="images/consulting-team.jpg" alt="Professional risk and compliance consultation">
+        <div class="why-photo-copy"><strong>Practical expertise</strong><span>Guidance shaped by real operational environments, audit expectations and business realities.</span></div>
+      </div>
+      <div class="why-list">
+        <div class="why-item">Bahamian expertise</div><div class="why-item">ISO certified professionals</div>
+        <div class="why-item">NEBOSH certified</div><div class="why-item">Lean Six Sigma expertise</div>
+        <div class="why-item">40+ years combined experience</div><div class="why-item">Technology-enabled solutions</div>
+        <div class="why-item">Multi-industry experience</div><div class="why-item">Ongoing support</div>
+      </div>
+    </div>
+    <div class="why-expertise">
+      <div class="exp-card"><div class="exp-std">ISO 9001</div><div class="exp-name">Quality Management</div><div class="exp-body">Design, implementation and continual improvement of quality management systems.</div></div>
+      <div class="exp-card"><div class="exp-std">ISO 14001</div><div class="exp-name">Environmental Management</div><div class="exp-body">Environmental compliance, impact reduction and regulatory readiness.</div></div>
+      <div class="exp-card"><div class="exp-std">ISO 45001</div><div class="exp-name">Occupational Health &amp; Safety</div><div class="exp-body">Workplace safety systems that protect people and reduce operational risk.</div></div>
+      <div class="exp-card"><div class="exp-std">ISO 22301</div><div class="exp-name">Business Continuity</div><div class="exp-body">Resilience planning to keep your organisation operational when it matters most.</div></div>
+    </div>
+  </div>
 </section>
 
-<!-- SOLUTIONS -->
 <section class="sec solutions" id="solutions">
- <div class="sec-inner">
- <div class="sec-ey">Our Solutions</div>
- <h2 class="sec-h2">Two ways <em>Summit serves you</em></h2>
- <p class="sec-p">Expert consulting services and a purpose-built digital platform — working together to help your organisation manage safety, risk and compliance with confidence.</p>
- <div class="sol-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px;margin:0 auto">
-
- <div class="sol-card">
- <div class="sol-accent acc-blue"></div>
- <div class="sol-icon"></div>
- <div class="sol-title">Consulting Services</div>
- <div class="sol-body">ISO implementation and management, internal and external auditing, risk assessments, training programmes, and continual improvement support across all major management systems. Our consultants work alongside your team to build systems that last.</div>
- <a href="services.html" class="sol-link">View services →</a>
- </div>
-
- <div class="sol-card">
- <div class="sol-accent acc-navy"></div>
- <div class="sol-icon"></div>
- <div class="sol-title">Summit Workspace</div>
- <div class="sol-body">The digital portal for the Summit App Suite — eight purpose-built compliance and safety applications accessed through a single secure login. From document control and CAPA tracking to asset management, audit scheduling and environmental compliance.</div>
- <a href="sync360.html" class="sol-link">Explore the app suite →</a>
- </div>
-
- </div>
- </div>
+  <div class="sec-inner">
+    <div class="sec-ey">Our Solutions</div>
+    <h2 class="sec-h2">Two ways <em>Summit serves you</em></h2>
+    <p class="sec-p">Expert consulting services and a purpose-built digital platform — working together to help your organisation manage safety, risk and compliance with confidence.</p>
+    <div class="sol-grid">
+      <article class="sol-card">
+        <div class="sol-media"><img src="images/field-operations.jpg" alt="Safety professionals working in an operational environment"></div>
+        <div class="sol-content"><div class="sol-title">Consulting Services</div><div class="sol-body">ISO implementation and management, internal and external auditing, risk assessments, training programmes and continual improvement support across major management systems. Our consultants work alongside your team to build systems that last.</div><a href="services.html" class="sol-link">View services →</a></div>
+      </article>
+      <article class="sol-card">
+        <div class="sol-media"><img src="images/workspace-dashboard.jpg" alt="Summit digital dashboard shown on a tablet in a port environment"></div>
+        <div class="sol-content"><div class="sol-title">Summit Workspace</div><div class="sol-body">The digital portal for the Summit App Suite — eight purpose-built compliance and safety applications accessed through a single secure login. From document control and CAPA tracking to asset management, audit scheduling and environmental compliance.</div><a href="sync360.html" class="sol-link">Explore the app suite →</a></div>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- INDUSTRIES -->
+<section class="field-strip">
+  <div class="field-inner">
+    <div class="field-img"><img src="images/field-operations.jpg" alt="Workers in a high-risk operational setting"></div>
+    <div class="field-copy"><div class="sec-ey">From the field to the dashboard</div><h3>Compliance should work where your people work.</h3><p>Summit connects practical consultancy with structured digital tools so findings, actions, documents, risk controls and evidence move from conversation to accountable follow-through.</p><a href="sync360.html" class="btn-a" style="align-self:flex-start">See Summit Workspace →</a></div>
+  </div>
+</section>
+
 <section class="sec industries" id="industries">
- <div class="sec-inner">
- <div class="sec-ey">Industries We Serve</div>
- <h2 class="sec-h2">Built for <em>high-stakes operations</em></h2>
- <p class="sec-p">Summit works across the industries where safety, compliance, and resilience are non-negotiable.</p>
- <div class="ind-grid">
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Ports &amp; Maritime</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Airports</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Utilities &amp; Energy</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Manufacturing</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Hospitality</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Government Agencies</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Industrial Facilities</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Shipyards</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Critical Infrastructure</div>
- </div>
- <div class="ind-item">
- <div class="ind-icon"></div>
- <div class="ind-name">Logistics &amp; Freight</div>
- </div>
- </div>
- </div>
+  <div class="sec-inner">
+    <div class="sec-ey">Industries We Serve</div>
+    <h2 class="sec-h2">Built for <em>high-stakes operations</em></h2>
+    <p class="sec-p">Summit works across industries where safety, compliance and resilience are non-negotiable.</p>
+    <div class="ind-grid">
+      <div class="ind-item"><div class="ind-name">Ports &amp; Maritime</div></div>
+      <div class="ind-item"><div class="ind-name">Airports</div></div>
+      <div class="ind-item"><div class="ind-name">Utilities &amp; Energy</div></div>
+      <div class="ind-item"><div class="ind-name">Manufacturing</div></div>
+      <div class="ind-item"><div class="ind-name">Hospitality</div></div>
+      <div class="ind-item"><div class="ind-name">Government Agencies</div></div>
+      <div class="ind-item"><div class="ind-name">Industrial Facilities</div></div>
+      <div class="ind-item"><div class="ind-name">Shipyards</div></div>
+      <div class="ind-item"><div class="ind-name">Critical Infrastructure</div></div>
+      <div class="ind-item"><div class="ind-name">Logistics &amp; Freight</div></div>
+    </div>
+  </div>
 </section>
 
-<!-- TEAM -->
 <section class="sec team" id="team">
- <div class="sec-inner">
- <div class="sec-ey">Our Team</div>
- <h2 class="sec-h2">The people behind <em>Summit</em></h2>
- <p class="sec-p">Local knowledge, global standards. Our team brings certified expertise across ISO, HSE, risk, and compliance.</p>
- <div class="team-grid">
- <div class="team-card">
- <div class="team-av">AM</div>
- <div class="team-name">Antonnesia Moxey</div>
- <div class="team-role">Lead Consultant · ISO Specialist</div>
- <div class="team-role" style="color:var(--amber);margin-top:3px">Automation &amp; Process Improvement Lead</div>
- <div class="team-body">ISO lead auditor with deep expertise in quality, environmental, and safety management system implementation across the Caribbean.</div>
- </div>
- <div class="team-card">
- <div class="team-av">CH</div>
- <div class="team-name">Coshanda Hield</div>
- <div class="team-role">HSE &amp; Compliance Specialist</div>
- <div class="team-body">NEBOSH certified HSE professional focused on occupational health, safety compliance programmes, and emergency preparedness planning.</div>
- </div>
- </div>
- </div>
+  <div class="sec-inner">
+    <div class="sec-ey">Our Team</div>
+    <h2 class="sec-h2">The people behind <em>Summit</em></h2>
+    <p class="sec-p">Local knowledge, global standards. Our team brings certified expertise across ISO, HSE, risk and compliance.</p>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-av">AM</div><div class="team-name">Antonnesia Moxey</div><div class="team-role">Lead Consultant · ISO Specialist</div><div class="team-role" style="color:var(--amber);margin-top:-5px">Automation &amp; Process Improvement Lead</div><div class="team-body">ISO lead auditor with deep expertise in quality, environmental and safety management system implementation across the Caribbean.</div></div>
+      <div class="team-card"><div class="team-av">CH</div><div class="team-name">Coshanda Hield</div><div class="team-role">HSE &amp; Compliance Specialist</div><div class="team-body">NEBOSH certified HSE professional focused on occupational health, safety compliance programmes and emergency preparedness planning.</div></div>
+    </div>
+  </div>
 </section>
 
-<!-- CTA -->
 <div class="cta-strip" id="contact">
- <h2>Ready to strengthen compliance, safety &amp; resilience?</h2>
- <p>Book a free consultation with our team. No obligation — just a practical conversation about your operation.</p>
- <a href="mailto:info@summitsrcgroup.com" class="btn-a">
- Schedule a consultation →
- </a>
+  <h2>Ready to strengthen compliance, safety &amp; resilience?</h2>
+  <p>Book a free consultation with our team. No obligation — just a practical conversation about your operation.</p>
+  <a href="mailto:info@summitsrcgroup.com" class="btn-a">Schedule a consultation →</a>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="index.html"><img src="logo.png" alt="Summit Safety Risk and Compliance Authority" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
-    <div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority. All rights reserved.</div>
-  </div>
-</footer>
-
+<footer><div class="footer-inner"><a href="index.html"><img src="logo.png" alt="Summit Safety Risk & Compliance Authority"></a><div class="footer-copy">© 2026 Summit Safety, Risk &amp; Compliance Authority. All rights reserved.</div></div></footer>
 </body>
 </html>

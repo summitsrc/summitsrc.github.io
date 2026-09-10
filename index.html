@@ -4,17 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Summit Safety, Risk & Compliance Authority</title>
-<!-- Summit favicon / Google Search site icon -->
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#0D2B55">
-<meta property="og:site_name" content="Summit Safety, Risk & Compliance Authority">
-<meta property="og:title" content="Summit Safety, Risk & Compliance Authority">
-<meta property="og:description" content="Your Partner in Safety, Risk & Continuous Improvement.">
-<meta property="og:image" content="https://www.summitsrcgroup.com/favicon-512x512.png">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -81,8 +70,16 @@ nav>a img{height:40px!important;filter:brightness(0) invert(1)}
 .cta-strip{background:var(--blue);padding:78px 40px;text-align:center}.cta-strip h2{font-family:var(--fd);font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-.5px;margin-bottom:14px;line-height:1}.cta-strip p{font-size:16px;color:rgba(255,255,255,.68);margin-bottom:34px}.cta-strip .btn-a{font-size:15px;padding:14px 32px;box-shadow:0 4px 20px rgba(0,0,0,.2)}
 footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:38px 40px}.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-inner img{height:40px;filter:brightness(0) invert(1)}.footer-copy{font-size:12px;color:rgba(255,255,255,.25)}
 
-@media(max-width:1024px){.hero{grid-template-columns:1fr;padding-top:98px}.hero-left,.hero-media{justify-self:center;max-width:760px}.hero-photo-wrap{min-height:520px}.hero-mini{left:20px}.why-feature{grid-template-columns:1fr}.why-expertise{grid-template-columns:1fr 1fr}.ind-grid{grid-template-columns:repeat(3,1fr)}.field-inner{grid-template-columns:1fr}.field-img{min-height:280px}}
-@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.hero{padding:100px 20px 58px;gap:34px}.hero-h1{font-size:48px}.hero-photo-wrap{min-height:470px;border-radius:16px}.hero-mini{display:none}.hero-photo-badge{grid-template-columns:1fr;padding:15px}.hero-stat span{display:none}.sec{padding:64px 20px}.why-list{grid-template-columns:1fr}.why-expertise{grid-template-columns:1fr}.sol-grid{grid-template-columns:1fr}.ind-grid{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:1fr}.field-strip{padding:0 20px 64px}.field-copy{padding:30px}.cta-strip{padding:58px 20px}.footer-inner{flex-direction:column;align-items:flex-start}}
+
+/* RESOURCE HUB PROMO */
+.resource-promo{background:var(--off)}
+.resource-promo-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch;margin-top:46px}
+.resource-feature{background:var(--navy-dk);border-radius:16px;padding:34px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.resource-feature::after{content:'';position:absolute;right:-70px;bottom:-90px;width:260px;height:260px;border-radius:50%;background:rgba(26,127,173,.14)}
+.resource-feature>*{position:relative;z-index:1}.resource-feature .rf-tag{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:12px}.resource-feature h3{font-family:var(--fd);font-size:34px;line-height:1;text-transform:uppercase;color:#fff;margin-bottom:12px}.resource-feature p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);margin-bottom:24px;max-width:520px}.resource-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}.resource-mini{background:#fff;border:1.5px solid var(--line-lt);border-radius:12px;padding:18px;transition:.2s}.resource-mini:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(13,43,85,.08)}.resource-mini svg{width:22px;height:22px;stroke:var(--blue);margin-bottom:10px}.resource-mini strong{display:block;font-size:13px;color:var(--navy);margin-bottom:4px}.resource-mini span{display:block;font-size:11.5px;line-height:1.5;color:var(--slate)}
+
+@media(max-width:1024px){.resource-promo-grid{grid-template-columns:1fr}.resource-list{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;padding-top:98px}.hero-left,.hero-media{justify-self:center;max-width:760px}.hero-photo-wrap{min-height:520px}.hero-mini{left:20px}.why-feature{grid-template-columns:1fr}.why-expertise{grid-template-columns:1fr 1fr}.ind-grid{grid-template-columns:repeat(3,1fr)}.field-inner{grid-template-columns:1fr}.field-img{min-height:280px}}
+@media(max-width:768px){.resource-list{grid-template-columns:1fr}nav{padding:0 20px}.nav-links{display:none}.hero{padding:100px 20px 58px;gap:34px}.hero-h1{font-size:48px}.hero-photo-wrap{min-height:470px;border-radius:16px}.hero-mini{display:none}.hero-photo-badge{grid-template-columns:1fr;padding:15px}.hero-stat span{display:none}.sec{padding:64px 20px}.why-list{grid-template-columns:1fr}.why-expertise{grid-template-columns:1fr}.sol-grid{grid-template-columns:1fr}.ind-grid{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:1fr}.field-strip{padding:0 20px 64px}.field-copy{padding:30px}.cta-strip{padding:58px 20px}.footer-inner{flex-direction:column;align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -92,6 +89,7 @@ footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:38px 4
   <div class="nav-links">
     <a href="services.html">Services</a>
     <a href="sync360.html">Our Products</a>
+    <a href="resources.html">Resources</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="https://workspace.summitsrcgroup.com/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,180,216,.15);border:1.5px solid rgba(0,180,216,.4);color:#00B4D8;border-radius:6px;font-weight:700;font-size:12px">Launch Workspace</a>
@@ -162,6 +160,29 @@ footer{background:var(--navy-dk);border-top:1px solid var(--line);padding:38px 4
         <div class="sol-media"><img src="images/workspace-dashboard.jpg" alt="Summit digital dashboard shown on a tablet in a port environment"></div>
         <div class="sol-content"><div class="sol-title">Summit Workspace</div><div class="sol-body">The digital portal for the Summit App Suite — eight purpose-built compliance and safety applications accessed through a single secure login. From document control and CAPA tracking to asset management, audit scheduling and environmental compliance.</div><a href="sync360.html" class="sol-link">Explore the app suite →</a></div>
       </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec resource-promo" id="resources">
+  <div class="sec-inner">
+    <div class="sec-ey">Free Summit Resources</div>
+    <h2 class="sec-h2">Practical support, <em>before you ever hire us.</em></h2>
+    <p class="sec-p">Explore free articles, interactive tools, templates, checklists and learning resources designed to strengthen everyday safety, risk and compliance management.</p>
+    <div class="resource-promo-grid">
+      <div class="resource-feature">
+        <div class="rf-tag">Summit Resource Hub</div>
+        <h3>Useful tools. Practical guidance. Stronger systems.</h3>
+        <p>Use our free resources to assess readiness, structure your records, improve follow-up and build confidence across ISO, safety, risk, business continuity and environmental management.</p>
+        <a class="btn-a" href="resources.html">Explore the Resource Hub →</a>
+      </div>
+      <div class="resource-list">
+        <a class="resource-mini" href="resources.html#tools"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg><strong>Free Tools</strong><span>Interactive readiness, risk and due-date tools.</span></a>
+        <a class="resource-mini" href="resources.html#templates"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg><strong>Templates</strong><span>Registers, matrices, audit and compliance templates.</span></a>
+        <a class="resource-mini" href="resources.html#articles"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><strong>Articles & Insights</strong><span>Practical guidance for real operating environments.</span></a>
+        <a class="resource-mini" href="resources.html#guides"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v17H6.5A2.5 2.5 0 0 0 4 22z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13v17h4.5A2.5 2.5 0 0 1 20 22z"/></svg><strong>Guides & Checklists</strong><span>Step-by-step resources you can print and use.</span></a>
+      </div>
     </div>
   </div>
 </section>
